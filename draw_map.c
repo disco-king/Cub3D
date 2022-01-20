@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 17:20:30 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/20 18:47:42 by wabathur         ###   ########.fr       */
+/*   Created: 2022/01/20 18:52:26 by wabathur          #+#    #+#             */
+/*   Updated: 2022/01/20 19:00:07 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 
-int	main(void)
+void	scale_map(int i, int j, t_map *map)
 {
-	t_window	window;
-	char		**map;
-
-	map = malloc(sizeof(char *) * 1000);
-	map[0] = "111111111";
-	map[1] = "100000001";
-	map[2] = "100000001";
-	map[3] = "10N000001";
-	map[4] = "100000001";
-	map[5] = "100000001";
-	map[6] = "111111111";
-	map[7] = NULL;
-	init_window(&window, map);
-	return (0);
+	if (map->x == 0 && map->y == 0)
+	{
+		map->x = j;
+		map->y = i;
+	}
 }

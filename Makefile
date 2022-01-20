@@ -1,6 +1,6 @@
 NAME = cub3d
 
-SOURCE = main.c
+SOURCE = main.c start_events.c
 
 CC = gcc
 
