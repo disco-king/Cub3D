@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:20:30 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/20 17:32:31 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/20 17:45:42 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 int	main(void)
 {
-	void	*mlx;
-	void	*wind;
+	t_window	window;
 
-	wind = NULL;
-	mlx = mlx_init();
-	wind = mlx_new_window(mlx, 640, 480, "window");
-	mlx_loop(mlx);
+	init_window(&window);
 	return (0);
 }
