@@ -63,12 +63,12 @@ void	draw_big_map(t_window *window, char **map)
 {
 	int		i;
 	int		j;
-	t_map	map_s;
+	//t_map	map_s;
 
 	i = 0;
 	j = 0;
-	map_s.x = 0;
-	map_s.y = 0;
+	//map_s.x = 0;
+	//map_s.y = 0;
 	while (map[i])
 	{
 		while (map[i][j])
