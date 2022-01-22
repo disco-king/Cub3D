@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 12:56:37 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/22 15:44:44 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/22 18:05:52 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*we need map size in control structure*/
 int	key_hook(int keycode, t_window *window)
 {
-	count_ray(window, 5, 1, 649);
+	count_ray(window, window->player->dir_x, window->player->dir_y, 649);
 	scale_map(window->player->y * 50, window->player->x * 50, window, 649);
 	if (keycode == A && window->player->x > 1
 		&& window->map[window->player->y][window->player->x - 1] != '1')
@@ -34,7 +34,8 @@ int	key_hook(int keycode, t_window *window)
 		mlx_destroy_window(window->mlx, window->window);
 		exit(0);
 	}
-	count_ray(window, 5, 1, 160000);
+	change_dir(window, keycode);
+	count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
 	scale_map(window->player->y * 50, window->player->x * 50, window, 160000);
 	return (0);
 }

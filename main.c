@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:20:30 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/22 17:06:08 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/22 18:23:20 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(void)
 	map[6] = "111111111";
 	map[7] = NULL;
 	window.map = map;
+	window.player->angle = sqrtf(2) / 2;
 	init_window(&window, map);
 	return (0);
 }

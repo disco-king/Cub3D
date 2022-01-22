@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/22 15:43:21 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/22 17:52:22 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,9 @@ void	draw_big_map(t_window *window, char **map)
 {
 	int		i;
 	int		j;
-	//t_map	map_s;
 
 	i = 0;
 	j = 0;
-	//map_s.x = 0;
-	//map_s.y = 0;
 	while (map[i])
 	{
 		while (map[i][j])
@@ -95,7 +92,10 @@ void	init_window(t_window *window, char **map)
 	find_start_pos_and_dir(map, window);
 	color_window(window);
 	draw_big_map(window, map);
-	count_ray(window, 5, 1, 160000);
+	window->player->dir_x = window->player->x;
+	window->player->dir_y = 0;
+	//change_dir(window);
+	count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
 	mlx_key_hook(window->window, key_hook, window);
 	mlx_loop(window->mlx);
 }
