@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 12:56:37 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/22 18:05:52 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/23 14:04:24 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ int	key_hook(int keycode, t_window *window)
 	{
 		mlx_destroy_window(window->mlx, window->window);
 		exit(0);
+	}	
+	else if (keycode != RA && keycode != LA)
+	{
+		count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
+		scale_map(window->player->y * 50,
+			window->player->x * 50, window, 160000);
+		return (0);
 	}
 	change_dir(window, keycode);
 	count_ray(window, window->player->dir_x, window->player->dir_y, 160000);

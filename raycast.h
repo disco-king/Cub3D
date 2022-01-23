@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/22 18:05:05 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/23 12:45:36 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		key_hook(int keycode, t_window *window);
 /*draw_ray on map*/
 
 void	count_ray(t_window *window, float xend, float yend, int color);
+void	find_end_points(t_window *window);
 
 /*angle manipulations*/
 void	change_dir(t_window *window, int keycode);
