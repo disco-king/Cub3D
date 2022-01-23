@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:07:26 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/23 14:09:57 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/23 15:28:15 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	count_ray(t_window *window, float xend, float yend, int color)
 	l = find_max(xend - window->player->x, yend - window->player->y);
 	dx = (xend - window->player->x) / l;
 	dy = (yend - window->player->y) / l;
-	printf("%f %f\n", dx, dy);
+	//printf("%f %f\n", dx, dy);
 	l = roundf(l);
 	while (1)
 	{
