@@ -7,9 +7,9 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+#LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
-#LFLAGS = libmlx_Linux.a -lXext -lX11 -lm -lz -o
+LFLAGS = -L /usr/local/lib -lmlx_Linux -lXext -lX11 -lm
 
 HEADER = raycast.h
 
