@@ -1,16 +1,16 @@
 #include "parse.h"
 
-int check_empty(char *line)
+int line_empty(char *line)
 {
 	if(!line)
-		return(0);
+		return(1);
 	while(*line)
 	{
 		if(*line != ' ')
-			return(1);
+			return(0);
 		line++;
 	}
-	return(0);
+	return(1);
 }
 
 int get_value(char c, int *character)
@@ -107,22 +107,22 @@ int get_max_len(t_list *lst)
 int check_lst(t_list *lst)
 {
 	int max_len;
-	int non_empty;
+	int empty;
 	int i;
 
 	i = 0;
-	non_empty = 0;
+	empty = 0;
 	max_len = get_max_len(lst);
 	while(i < max_len)
 	{
 		if(!column_empty(lst, i))
 		{
-			non_empty = 1;
-			if(check_column(lst, i))
+			if(check_column(lst, i) || empty == 2)
 				return(1);
+			empty = 1;
 		}
-		else if (non_empty)
-			return(1);
+		else if (empty)
+			empty++;
 		i++;
 	}
 	return(0);
@@ -131,21 +131,21 @@ int check_lst(t_list *lst)
 int get_line_lst(t_list **lines, int fd)
 {
 	int res;
-	int non_empty = 0;
+	int empty = 0;
 	char *line;
 
 	res = get_next_line(fd, &line);
 	while (res || line)
 	{
-		if(check_empty(line))
+		if(!line_empty(line))
 		{
-			if(check_line(line))
+			if(check_line(line) || empty == 2)
 				break ;
-			non_empty = 1;
+			empty = 1;
 			ft_lstadd_back(lines, ft_lstnew(ft_strdup(line)));
 		}
-		else if(non_empty)
-			break ;
+		else if(empty)
+			empty++;
 		free(line);
 		res = get_next_line(fd, &line);
 	}
