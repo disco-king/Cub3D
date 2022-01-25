@@ -44,6 +44,10 @@ int	main(void)
 {
 	t_data img;
 
+	img.up = 0;
+	img.down = 0;
+	img.left = 0;
+	img.right = 0;
 	img.x0 = 290;
 	img.y0 = 190;
 	img.mlx = mlx_init();
