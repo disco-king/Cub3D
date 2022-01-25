@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/23 15:02:53 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/25 14:01:40 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,16 @@ void	init_window(t_window *window, char **map)
 	window->ceiling_color = 649;
 	find_start_pos_and_dir(map, window);
 	color_window(window);
-	draw_big_map(window, map);
+	//draw_big_map(window, map);
 	// window->player->dir_x = 0;
 	// window->player->dir_y = window->player->y;
 	//change_dir(window);
 	find_end_points(window);
 	count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
-	draw_all_rays(window, 160000);
+	//draw_all_rays(window, 160000);
+	//sleep(10);
 	mlx_key_hook(window->window, key_hook, window);
+	//sleep(2);
+	//exit(0);
 	mlx_loop(window->mlx);
 }

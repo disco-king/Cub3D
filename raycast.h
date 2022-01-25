@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/23 14:47:00 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/25 12:20:34 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ typedef struct s_window
 	int			ceiling_color;
 }	t_window;
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+
+
 void	init_window(t_window *window, char **map);
 void	scale_map(int i, int j, t_window *window, int color);
 
@@ -68,4 +78,7 @@ void	find_end_points(t_window *window);
 /*angle manipulations*/
 void	change_dir(t_window *window, int keycode);
 void	draw_all_rays(t_window *window, int color);
+
+/*draw vert*/
+void	draw_wall(t_window *window);
 #endif

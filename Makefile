@@ -1,7 +1,7 @@
 NAME = cub3d
 
 SOURCE = main.c start_events.c draw_map.c simple_hooks.c draw_ray_on_map.c \
-		direction_manipulations.c
+		direction_manipulations.c draw_walls.c
 
 CC = gcc
 
