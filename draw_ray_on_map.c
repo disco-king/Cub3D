@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:07:26 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/25 13:28:54 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:23:39 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ void	count_ray(t_window *window, float xend, float yend, int color)
 			break ;
 		i++;
 	}
-	draw_wall(window);
+	draw_wall(window, 0);
 }

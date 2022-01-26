@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/25 12:20:34 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:13:25 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_window
 	void		*window;
 	int			floor_color;
 	int			ceiling_color;
+	int			color;
 }	t_window;
 
 typedef struct	s_data {
@@ -80,5 +81,5 @@ void	change_dir(t_window *window, int keycode);
 void	draw_all_rays(t_window *window, int color);
 
 /*draw vert*/
-void	draw_wall(t_window *window);
+void	draw_wall(t_window *window, int x);
 #endif

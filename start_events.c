@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/25 14:01:40 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:27:44 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	draw_big_map(t_window *window, char **map)
 void	init_window(t_window *window, char **map)
 {
 	window->mlx = mlx_init();
-	window->window = mlx_new_window(window->mlx, 1280, 720, "window");
+	window->window = mlx_new_window(window->mlx, 1280, 720, "cub3d");
 	window->floor_color = 1021;
 	window->ceiling_color = 649;
 	find_start_pos_and_dir(map, window);
@@ -96,8 +96,8 @@ void	init_window(t_window *window, char **map)
 	// window->player->dir_y = window->player->y;
 	//change_dir(window);
 	find_end_points(window);
-	count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
-	//draw_all_rays(window, 160000);
+	//count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
+	draw_all_rays(window, 160000);
 	//sleep(10);
 	mlx_key_hook(window->window, key_hook, window);
 	//sleep(2);

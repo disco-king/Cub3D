@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 12:56:37 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/25 12:33:24 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:07:52 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 int	key_hook(int keycode, t_window *window)
 {
 	draw_all_rays(window, 649);
-	count_ray(window, window->player->dir_x, window->player->dir_y, 649);
-	scale_map(window->player->y * 50, window->player->x * 50, window, 649);
+	//count_ray(window, window->player->dir_x, window->player->dir_y, 649);
+	//scale_map(window->player->y * 50, window->player->x * 50, window, 649);
 	if (keycode == A && window->player->x > 1
 		&& window->map[window->player->y][window->player->x - 1] != '1')
 		window->player->x -= 1;
@@ -38,13 +38,13 @@ int	key_hook(int keycode, t_window *window)
 	else if (keycode != RA && keycode != LA)
 	{
 		//count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
-		scale_map(window->player->y * 50,
-			window->player->x * 50, window, 160000);
+		// scale_map(window->player->y * 50,
+		// 	window->player->x * 50, window, 160000);
 		return (0);
 	}
 	change_dir(window, keycode);
-	count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
+	//count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
 	draw_all_rays(window, 160000);
-	scale_map(window->player->y * 50, window->player->x * 50, window, 160000);
+	//scale_map(window->player->y * 50, window->player->x * 50, window, 160000);
 	return (0);
 }
