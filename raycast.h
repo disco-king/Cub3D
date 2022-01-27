@@ -25,6 +25,8 @@
 # define D 2
 # define LA 123
 # define RA 124
+# define WIN_Y 720
+# define WIN_X 1280
 
 typedef struct s_map
 {
@@ -32,6 +34,14 @@ typedef struct s_map
 	int		x;
 	int		y;
 }	t_map;
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef struct s_player
 {
@@ -52,16 +62,8 @@ typedef struct s_window
 	int			floor_color;
 	int			ceiling_color;
 	int			color;
+	t_data		*img;
 }	t_window;
-
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 
 
 void	init_window(t_window *window, char **map);
@@ -82,4 +84,10 @@ void	draw_all_rays(t_window *window, int color);
 
 /*draw vert*/
 void	draw_wall(t_window *window, int x);
+void	color_window(t_window *window);
+
+/*faster drawing section*/
+void get_new_image(void **new, t_window *win);
+void pix_to_img(t_data *data, int x, int y, int color);
+
 #endif

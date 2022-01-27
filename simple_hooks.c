@@ -12,22 +12,23 @@
 
 #include "raycast.h"
 
-/*we need map size in control structure*/
+/*we need map size in control structure
+alternative codes are added for testability on linux*/
 int	key_hook(int keycode, t_window *window)
 {
 	draw_all_rays(window, 649);
 	//count_ray(window, window->player->dir_x, window->player->dir_y, 649);
 	//scale_map(window->player->y * 50, window->player->x * 50, window, 649);
-	if (keycode == A && window->player->x > 1
+	if ((keycode == A || keycode == 65361) && window->player->x > 1
 		&& window->map[window->player->y][window->player->x - 1] != '1')
 		window->player->x -= 1;
-	else if (keycode == W && window->player->y > 1
+	else if ((keycode == W || keycode == 65362) && window->player->y > 1
 		&& window->map[window->player->y - 1][window->player->x] != '1')
 		window->player->y -= 1;
-	else if (keycode == S
+	else if ((keycode == S || keycode == 65364)
 		&& window->map[window->player->y + 1][window->player->x] != '1')
 		window->player->y += 1;
-	else if (keycode == D
+	else if ((keycode == D || keycode == 65363)
 		&& window->map[window->player->y][window->player->x + 1] != '1')
 		window->player->x += 1;
 	else if (keycode == ESC)

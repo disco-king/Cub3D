@@ -16,11 +16,17 @@ void	draw_all_rays(t_window *window, int color)
 {
 	float	temp_angle;
 	int		i;
+	void *new;
 
 	temp_angle = window->player->angle;
 	i = 0;
 	window->player->angle -= M_PI / 6;
 	color = 100;
+	// get_new_image(&new, window);
+	new = mlx_new_image(window->mlx, WIN_X, WIN_Y);
+	window->img->addr = mlx_get_data_addr(new, &(window->img->bits_per_pixel),
+								&(window->img->line_length), &(window->img->endian));
+	color_window(window);
 	while (i < 640)
 	{
 		window->player->angle += M_PI / 6 / 640;
@@ -45,6 +51,7 @@ void	draw_all_rays(t_window *window, int color)
 	find_end_points(window);
 	window->player->angle = temp_angle;
 	find_end_points(window);
+	mlx_put_image_to_window(window->mlx, window->window, new, 0, 0);
 }
 
 void	change_dir(t_window *window, int keycode)
