@@ -1,7 +1,7 @@
 NAME = cub3d
 
 SOURCE = main.c start_events.c draw_map.c simple_hooks.c draw_ray_on_map.c \
-		direction_manipulations.c draw_walls.c drawing.c
+		direction_manipulations.c draw_walls.c drawing.c new_engine.c
 
 CC = gcc
 
@@ -9,11 +9,11 @@ CC = gcc
 
 # LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
-LFLAGS = -g -L /usr/local/lib -lmlx_Linux -lXext -lX11 -lm
+LFLAGS = libmlx_Linux.a -lXext -lX11 -lm
 
 HEADER = raycast.h
 
-INCLUDE = -L /usr/local/lib -lmlx raycast.h
+INCLUDE = mlx.h raycast.h
 
 INCLUDE = raycast.h
 

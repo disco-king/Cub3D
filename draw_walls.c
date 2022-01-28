@@ -49,7 +49,7 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 
 	i = 0;
 	j = 0;
-	printf("wall height %d height %d %d\n", wall_height, height, x);
+//	printf("wall height %d height %d %d\n", wall_height, height, x);
 	draw_start = -wall_height / 2 + height / 2;
 	draw_end = wall_height / 2 + height / 2;
 	if (draw_start < 0)
@@ -61,13 +61,16 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 	{
 		// while (j < 100)
 		// {
-			// mlx_pixel_put(window->mlx, window->window, x, draw_start, window->color);
-			pix_to_img(window->img, x, draw_start, window->color);
+			//printf("draw start %d draw end %d\n", draw_start, draw_end);
+			//printf("pix %d %d\n", x, draw_start);
+			mlx_pixel_put(window->mlx, window->window, x, draw_start, window->color);
+			//pix_to_img(window->img, x, draw_start, window->color);
 		// 	j++;
 		// }
 		j = 0;
 		draw_start++;
 	}
+	usleep(10000);
 }
 
 
@@ -86,6 +89,7 @@ void	draw_wall(t_window *window, int x)
 	width = 1;
 	height = 720;
 	distance = count_distance(window) * cos(window->player->angle);
+	printf("here %f\n", distance);
 	wall_height = height / distance;
 	calc_pixel(window, (int)wall_height, height, x);
 	// while (i++ < wall_height)

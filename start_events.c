@@ -98,8 +98,9 @@ void	init_window(t_window *window, char **map)
 	// window->player->dir_y = window->player->y;
 	//change_dir(window);
 	find_end_points(window);
+	new_engine_start(window);
 	//count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
-	draw_all_rays(window, 160000);
+	//draw_all_rays(window, 160000);
 	//sleep(10);
 	mlx_key_hook(window->window, key_hook, window);
 	//sleep(2);
