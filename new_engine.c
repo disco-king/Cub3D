@@ -17,13 +17,14 @@ void	new_engine_start(t_window *window)
 	step_y = 0;
 	hit = 0;
 	r = window->player->angle;
+	printf("%f\n", window->player->angle);
 	r += M_PI / 6;
 	x = 0;
-	distance_vert = 10000;
-	distance_hor = 10000;
+	distance_vert = 100000;
+	distance_hor = 100000;
 	while (x < 1280)
 	{
-		printf("x is %d", x);
+		window->color = 160000;
 		user_tan = tanf(r);
 		if (cosf(r) > 0)
 		{
@@ -50,7 +51,7 @@ void	new_engine_start(t_window *window)
 		while (!hit)
 		{
 			if (window->map[(int)window->player->dir_y][(int)window->player->dir_x] == '1'
-				|| window->map[(int)window->player->dir_y][(int)window->player->dir_x])
+				|| window->player->dir_x < 0 || window->player->dir_y < 0)
 			{
 				distance_vert = cosf(r) * (window->player->dir_x - window->player->x)
 					- sinf(r) * (window->player->dir_y - window->player->y);
@@ -66,7 +67,7 @@ void	new_engine_start(t_window *window)
 		v_y = window->player->dir_y;
 		user_tan = 1 / user_tan;
 		hit = 0;
-		printf("distance vert is %f\n",distance_vert);
+		//printf("distance vert is %f user_tan is %f\n",distance_vert, user_tan);
 		if (sinf(r) > 0)
 		{
 			window->player->dir_y = window->player->y;
@@ -77,7 +78,7 @@ void	new_engine_start(t_window *window)
 		}
 		else if (sinf(r) < 0)
 		{
-			window->player->dir_y = window->player->y + 1;
+			window->player->dir_y = (int)window->player->y + 1;
 			window->player->dir_x = (window->player->y - window->player->dir_y)
 				* user_tan + window->player->x;
 			step_y = 1;
@@ -91,8 +92,12 @@ void	new_engine_start(t_window *window)
 		}
 		while (!hit)
 		{
-			if (window->map[(int)window->player->dir_y][(int)window->player->dir_x] == '1'
-			|| window->map[(int)window->player->dir_y][(int)window->player->dir_x])
+			int	dof;
+
+			dof = 0;
+			//printf("dir_x %f dir_y %f \n",window->player->dir_x, window->player->dir_y);
+			if (window->player->dir_x < 0 || window->player->dir_y < 0
+				|| window->map[(int)window->player->dir_y][(int)window->player->dir_x] == '1')
 			{
 				distance_hor = cosf(r) * (window->player->dir_x - window->player->x)
 					- sinf(r) * (window->player->dir_y - window->player->y);
@@ -104,16 +109,19 @@ void	new_engine_start(t_window *window)
 				window->player->dir_y += step_y;
 			}
 		}
+		//printf("distance hor %f is distance vert is %f\n",distance_hor, distance_vert);
 		if (distance_vert < distance_hor)
 		{
+			printf("distance vert has been chosen\n");
 			window->player->dir_x = v_x;
 			window->player->dir_y = v_y;
 			distance_hor = distance_vert;
+			window->color = 160100;
 		}
+		window->distance = distance_hor;
 		window->player->angle = r;
-		printf("distance hor is %f\n",distance_hor);
 		draw_wall(window, x);
 		x += 1;
-		r -= M_PI / 6 / 720;
+		r -= M_PI / 6 / 1280;
 	}
 }

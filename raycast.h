@@ -63,6 +63,7 @@ typedef struct s_window
 	int			ceiling_color;
 	int			color;
 	t_data		*img;
+	float		distance;
 }	t_window;
 
 
