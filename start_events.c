@@ -46,7 +46,7 @@ void	find_start_pos_and_dir(char **map, t_window *window)
 	{
 		while (map[i][j])
 		{
-			if (map[i][j] != '1' && map[i][j] != '0')
+			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] == 'N')
 			{
 				window->player->start_direction = map[i][j];
 				window->player->x = j;
@@ -94,8 +94,8 @@ void	init_window(t_window *window, char **map)
 	find_start_pos_and_dir(map, window);
 	//color_window(window);
 	//draw_big_map(window, map);
-	// window->player->dir_x = 0;
-	// window->player->dir_y = window->player->y;
+	window->player->dir_x = window->player->x;
+	window->player->dir_y = window->player->y;
 	//change_dir(window);
 	//find_end_points(window);
 	new_engine_start(window);

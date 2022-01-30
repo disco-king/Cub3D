@@ -49,9 +49,10 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 
 	i = 0;
 	j = 0;
-	printf("wall height %d height %d %d\n", wall_height, height, x);
+	//printf("wall height %d height %d %d\n", wall_height, height, x);
 	draw_start = -wall_height / 2 + height / 2;
 	draw_end = wall_height / 2 + height / 2;
+	//printf("start %d end %d\n", draw_start, draw_end);
 	if (draw_start < 0)
 		draw_start = 0;
 	if (draw_end >= height)
@@ -88,10 +89,9 @@ void	draw_wall(t_window *window, int x)
 	j = 0;
 	width = 1;
 	height = 720;
-	distance = window->distance;
-	//printf("here %f\n", distance);
-	wall_height = height / distance;
-	calc_pixel(window, (int)wall_height, height, x);
+	//printf("here %f\n", window->distance);
+	wall_height = height / window->distance;
+	calc_pixel(window, wall_height, height, x);
 	// while (i++ < wall_height)
 	// {
 	// 	//while (j++ <= 50)

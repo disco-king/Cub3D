@@ -31,24 +31,74 @@ int	count_break(t_window *window, int i, float dx, float dy)
 	return (0);
 }
 
-void	find_end_points(t_window *window)
+void	vert_points(t_window *window)
 {
 	int	i;
 
 	i = 0;
+	// window->player->dir_x = window->player->x;
+	// window->player->dir_y = window->player->y;
 	while (1)
 	{
 		window->player->dir_x = window->player->x
-			+ i * cosf(window->player->angle);
+			+ 1 * i;
 		window->player->dir_y = window->player->y
-			+ i * sinf(window->player->angle);
-		if (!window->map[(int)window->player->dir_y]
+			+ i * sin(window->player->angle);
+		if (window->player->dir_x < 0 || window->player->dir_y < 0
+			|| !window->map[(int)window->player->dir_y]
 			[(int)window->player->dir_x]
 			|| window->map[(int)window->player->dir_y]
 			[(int)window->player->dir_x] == '1')
 			break ;
 		i++;
 	}
+	window->distance = count_distance(window);
+}
+
+void	hor_points(t_window *window)
+{
+	int	i;
+
+	i = 0;
+	// window->player->dir_x = window->player->x;
+	// window->player->dir_y = window->player->y;
+	while (1)
+	{
+		window->player->dir_x = window->player->x
+			+ i * cos(window->player->angle);
+		window->player->dir_y = window->player->y
+			- 1 * i;
+		if (window->player->dir_x < 0 || window->player->dir_y < 0
+			|| !window->map[(int)window->player->dir_y]
+			[(int)window->player->dir_x]
+			|| window->map[(int)window->player->dir_y]
+			[(int)window->player->dir_x] == '1')
+			break ;
+		i++;
+	}
+	window->distance = count_distance(window);
+}
+
+void	find_end_points(t_window *window)
+{
+	float	temp_dir_x;
+	float	temp_dir_y;
+	float	current_dist;
+	
+	vert_points(window);
+	temp_dir_x = window->player->dir_x;
+	temp_dir_y = window->player->dir_y;
+	current_dist = window->distance;
+	hor_points(window);
+	if (current_dist < window->distance)
+	{
+		window->player->dir_x = temp_dir_x;
+		window->player->dir_y = temp_dir_y;
+		window->distance = current_dist;
+		window->color = 160000;
+	}
+	else
+		window->color = 160100;
 }
 
 void	count_ray(t_window *window, float xend, float yend, int color)

@@ -64,6 +64,7 @@ typedef struct s_window
 	int			color;
 	t_data		*img;
 	float		distance;
+	float		camera_angle;
 }	t_window;
 
 
@@ -92,5 +93,5 @@ void get_new_image(void **new, t_window *win);
 void pix_to_img(t_data *data, int x, int y, int color);
 
 void	new_engine_start(t_window *window);
-
+float	count_distance(t_window *window);
 #endif
