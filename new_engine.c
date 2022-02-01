@@ -38,6 +38,7 @@ void	new_engine_start(t_window *window)
 	int		hit;
 	int		x;
 	int		i;
+	void	*image;
 
 	i = 0;
 	step_x = 0;
@@ -52,6 +53,7 @@ void	new_engine_start(t_window *window)
 	distance_hor = 100000;
 	while (x < 1280)
 	{
+		get_new_image(&image, window);
 		distance_vert = 100000;
 		distance_hor = 100000;
 		window->color = 160000;
@@ -168,11 +170,14 @@ void	new_engine_start(t_window *window)
 		// window->camera_angle = fix_angle(window->camera_angle);
 		window->distance = cos(r) * window->distance;
 		//printf("r is %f\n", r);
+		// color_window(window);
 		draw_wall(window, x);
 		x += 1;
 		r -= M_PI / 3 / 1280;
 		r = fix_angle(r);
 		hit = 0;
+		mlx_put_image_to_window(window->mlx, window->window,
+					window->img, 0, 0);
 	}
 	//write(1, "here\n", 5);
 	// printf("angle change %f\n", M_PI / 3 / 1280);

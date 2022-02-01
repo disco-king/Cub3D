@@ -64,8 +64,8 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 		// {
 			//printf("draw start %d draw end %d\n", draw_start, draw_end);
 			//printf("pix %d %d\n", x, draw_start);
-			mlx_pixel_put(window->mlx, window->window, x, draw_start, window->color);
-			//pix_to_img(window->img, x, draw_start, window->color);
+			// mlx_pixel_put(window->mlx, window->window, x, draw_start, window->color);
+			pix_to_img(window->img, x, draw_start, window->color);
 		// 	j++;
 		// }
 		j = 0;

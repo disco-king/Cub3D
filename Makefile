@@ -9,7 +9,7 @@ CC = gcc
 
 # LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
-LFLAGS = libmlx_Linux.a -lXext -lX11 -lm
+LFLAGS = -lmlx_Linux -lXext -lX11 -lm
 
 HEADER = raycast.h
 
