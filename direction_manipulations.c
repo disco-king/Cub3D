@@ -54,25 +54,25 @@ void	draw_all_rays(t_window *window, int color)
 
 void	change_dir(t_window *window, int keycode)
 {
-	if (keycode == W || keycode == S
-		|| keycode == A || keycode == D)
-		find_end_points(window);
+	// if (keycode == W || keycode == S
+	// 	|| keycode == A || keycode == D)
+	// 	find_end_points(window);
 	if (keycode == LA)
 	{	
 		//draw_all_rays(window, 649);
-		window->player->angle -= M_PI_4 / 12;
-		if (window->player->angle == -M_PI * 2)
-			window->player->angle = 0;
-		find_end_points(window);
+		window->player->angle += M_PI_4 / 12;
+		//find_end_points(window);
 		//draw_all_rays(window, 160000);
+		//new_engine_start(window);
 	}
 	if (keycode == RA)
 	{
 		//draw_all_rays(window, 649);
-		window->player->angle += M_PI_4 / 12;
-		if (window->player->angle == M_PI * 2)
-			window->player->angle = 0;
-		find_end_points(window);
+		window->player->angle -= M_PI_4 / 12;
+		// if (window->player->angle == M_PI * 2)
+		// 	window->player->angle = 0;
+		//find_end_points(window);
 		//draw_all_rays(window, 160000);
+		//new_engine_start(window);
 	}
 }

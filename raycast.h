@@ -18,13 +18,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define ESC 53
-# define W 13
-# define S 1
-# define A 0
-# define D 2
-# define LA 123
-# define RA 124
+# define ESC 65307
+# define W 1751
+# define S 1747
+# define A 1729
+# define D 1732
+# define LA 65361
+# define RA 65363
 # define WIN_Y 720
 # define WIN_X 1280
 
@@ -45,8 +45,8 @@ typedef struct	s_data {
 
 typedef struct s_player
 {
-	int		x;
-	int		y;
+	float		x;
+	float		y;
 	int		start_direction;
 	float	dir_x;
 	float	dir_y;
@@ -65,6 +65,8 @@ typedef struct s_window
 	t_data		*img;
 	float		distance;
 	float		camera_angle;
+	int			x_border;
+	int			y_border;
 }	t_window;
 
 

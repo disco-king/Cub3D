@@ -19,16 +19,18 @@ int	main(void)
 
 	window.player = malloc(sizeof(t_player));
 	map = malloc(sizeof(char *) * 1000);
-	map[0] = "1111111";
-	map[1] = "1000001";
-	map[2] = "1000001";
-	map[3] = "10N0101";
-	map[4] = "1000001";
-	map[5] = "1000001";
-	map[6] = "1111111";
+	map[0] = "1111111111111";
+	map[1] = "1000000100001";
+	map[2] = "1000000000001";
+	map[3] = "1N00000000001";
+	map[4] = "1000100000001";
+	map[5] = "1000000000001";
+	map[6] = "1111111111111";
 	map[7] = NULL;
 	window.map = map;
 	window.player->angle = 0;
+	window.x_border = 6;
+	window.y_border = 6;
 	init_window(&window, map);
 	return (0);
 }

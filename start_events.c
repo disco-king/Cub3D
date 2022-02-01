@@ -49,8 +49,8 @@ void	find_start_pos_and_dir(char **map, t_window *window)
 			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] == 'N')
 			{
 				window->player->start_direction = map[i][j];
-				window->player->x = j;
-				window->player->y = i;
+				window->player->x = (float)j;
+				window->player->y = (float)i;
 			}
 			j++;
 		}
@@ -94,15 +94,15 @@ void	init_window(t_window *window, char **map)
 	find_start_pos_and_dir(map, window);
 	//color_window(window);
 	//draw_big_map(window, map);
-	window->player->dir_x = window->player->x;
-	window->player->dir_y = window->player->y;
+	// window->player->dir_x = window->player->x;
+	// window->player->dir_y = window->player->y;
 	//change_dir(window);
 	//find_end_points(window);
 	new_engine_start(window);
 	//count_ray(window, window->player->dir_x, window->player->dir_y, 160000);
 	//draw_all_rays(window, 160000);
 	//sleep(10);
-	//mlx_key_hook(window->window, key_hook, window);
+	mlx_key_hook(window->window, key_hook, window);
 	//sleep(2);
 	//exit(0);
 	mlx_loop(window->mlx);

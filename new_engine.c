@@ -2,11 +2,25 @@
 
 float	fix_angle(float angle)
 {
-	if (angle > 2 * M_PI)
+	if (angle >= 2 * M_PI)
 		angle -= 2 * M_PI;
 	else if (angle < 0)
 		angle += 2 * M_PI;
 	return (angle);
+}
+
+int	check_borders(t_window *window)
+{
+	int	mx;
+	int	my;
+	int	mp;
+
+	mx = (int)window->player->dir_x;
+	my = (int)window->player->dir_y;
+	mp = my * window->x_border + mx;
+	if (mp > 0 && mp < window->x_border * window->y_border)
+		return (1);
+	return (0);
 }
 
 void	new_engine_start(t_window *window)
@@ -63,17 +77,19 @@ void	new_engine_start(t_window *window)
 			window->player->dir_y = window->player->y;
 			hit = 1;
 		}
-		while (!hit)
+		i = 0;
+		while (!hit && i < 6)
 		{
 			//printf("nearest wall %f %f \n", window->player->dir_x, window->player->dir_y);
-			if (window->player->dir_x < 0 || window->player->dir_y < 0
-				|| window->map[(int)window->player->dir_y][(int)window->player->dir_x] == '1')
-			{
-				distance_vert = cos(r) * (window->player->dir_x - window->player->x)
-					- sin(r) * (window->player->dir_y - window->player->y);
-				hit = 1;
-			}
-			else
+			if (check_borders(window))
+				if (window->player->dir_x < 0 || window->player->dir_y < 0
+					|| window->map[(int)window->player->dir_y][(int)window->player->dir_x] == '1')
+				{
+					distance_vert = cos(r) * (window->player->dir_x - window->player->x)
+						- sin(r) * (window->player->dir_y - window->player->y);
+					hit = 1;
+				}
+			if (!hit)
 			{
 				i++;
 				window->player->dir_x += step_x;
@@ -111,24 +127,29 @@ void	new_engine_start(t_window *window)
 			window->player->dir_y = window->player->y;
 			hit = 1;
 		}
-		while (!hit)
+		i = 0;
+		while (!hit && i < 6)
 		{
 			//printf("dir_x %f dir_y %f \n",window->player->dir_x, window->player->dir_y);
-			if (window->player->dir_x < 0 || window->player->dir_y < 0
-				|| window->map[(int)window->player->dir_y][(int)window->player->dir_x] == '1')
+			if (check_borders(window))
+				if (window->player->dir_x < 0 || window->player->dir_y < 0
+					|| window->map[(int)window->player->dir_y][(int)window->player->dir_x] == '1')
+				{
+					distance_hor = cos(r) * (window->player->dir_x - window->player->x)
+						- sin(r) * (window->player->dir_y - window->player->y);
+					hit = 1;
+				}
+			// else
+			// {
+			if (!hit)
 			{
-				distance_hor = cos(r) * (window->player->dir_x - window->player->x)
-					- sin(r) * (window->player->dir_y - window->player->y);
-				hit = 1;
-			}
-			else
-			{
+				i++;
 				window->player->dir_x += step_x;
 				window->player->dir_y += step_y;
 				distance_hor = 100000;
 			}
 		}
-		printf("x is %d\n", x);
+
 		// printf("direction after hor %f %f\n",window->player->dir_x, window->player->dir_y);
 		// printf("distance hor %f is distance vert is %f\n", distance_hor, distance_vert);
 		if (distance_vert < distance_hor)
@@ -147,8 +168,13 @@ void	new_engine_start(t_window *window)
 		//printf("r is %f\n", r);
 		draw_wall(window, x);
 		x += 1;
-		r -= M_PI / 6 / 1280;
+		r -= M_PI / 3 / 1280;
 		r = fix_angle(r);
 		hit = 0;
 	}
+	//write(1, "here\n", 5);
+	// printf("angle change %f\n", M_PI / 3 / 1280);
+	// printf("angle is %f dir_x %f dir_y %f step_x is %f step_y is %f tan is %f\n", r, window->player->dir_x, window->player->dir_y, step_x, step_y, user_tan);
+	// printf("x is %f y is %f\n", window->player->x, window->player->y);
+			//printf("x is %d\n", x);
 }
