@@ -29,7 +29,7 @@ int	main(void)
 	map[7] = NULL;
 	window.map = map;
 	window.player->angle = 0;
-	window.x_border = 6;
+	window.x_border = 14;
 	window.y_border = 6;
 	init_window(&window, map);
 	return (0);

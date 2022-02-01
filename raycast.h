@@ -96,4 +96,5 @@ void pix_to_img(t_data *data, int x, int y, int color);
 
 void	new_engine_start(t_window *window);
 float	count_distance(t_window *window);
+int	check_borders(t_window *window);
 #endif

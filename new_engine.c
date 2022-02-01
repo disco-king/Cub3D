@@ -18,6 +18,8 @@ int	check_borders(t_window *window)
 	mx = (int)window->player->dir_x;
 	my = (int)window->player->dir_y;
 	mp = my * window->x_border + mx;
+	// if (mx > window->x_border || my > window->y_border)
+	// 	return (0);
 	if (mp > 0 && mp < window->x_border * window->y_border)
 		return (1);
 	return (0);
@@ -78,7 +80,7 @@ void	new_engine_start(t_window *window)
 			hit = 1;
 		}
 		i = 0;
-		while (!hit && i < 6)
+		while (!hit && i < window->x_border)
 		{
 			//printf("nearest wall %f %f \n", window->player->dir_x, window->player->dir_y);
 			if (check_borders(window))
@@ -128,7 +130,7 @@ void	new_engine_start(t_window *window)
 			hit = 1;
 		}
 		i = 0;
-		while (!hit && i < 6)
+		while (!hit && i < window->y_border)
 		{
 			//printf("dir_x %f dir_y %f \n",window->player->dir_x, window->player->dir_y);
 			if (check_borders(window))
