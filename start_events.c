@@ -85,8 +85,8 @@ void	draw_big_map(t_window *window, char **map)
 
 void	init_window(t_window *window, char **map)
 {
-	t_data img;
-	window->img = &img;
+	// t_data img;
+	// window->img = &img;
 	window->mlx = mlx_init();
 	window->window = mlx_new_window(window->mlx, 1280, 720, "cub3d");
 	window->floor_color = 1021;

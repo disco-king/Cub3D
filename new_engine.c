@@ -39,7 +39,9 @@ void	new_engine_start(t_window *window)
 	int		x;
 	int		i;
 	void	*image;
+	t_data img;
 
+	window->img = &img;
 	i = 0;
 	step_x = 0;
 	step_y = 0;
@@ -51,9 +53,19 @@ void	new_engine_start(t_window *window)
 	x = 0;
 	distance_vert = 100000;
 	distance_hor = 100000;
+	// get_new_image(&image, window);
+	image = mlx_new_image(window->mlx, WIN_X, WIN_Y);
+	window->img->addr = mlx_get_data_addr(window, &(window->img->bits_per_pixel),
+								&(window->img->line_length), &(window->img->endian));
+	if(!image || !window->img->addr)
+	{
+		printf("init returned NULL\n");
+		exit(1);
+	}
+	else
+		printf("image %p\naddr %p\n", image, window->img->addr);
 	while (x < 1280)
 	{
-		get_new_image(&image, window);
 		distance_vert = 100000;
 		distance_hor = 100000;
 		window->color = 160000;
@@ -176,9 +188,8 @@ void	new_engine_start(t_window *window)
 		r -= M_PI / 3 / 1280;
 		r = fix_angle(r);
 		hit = 0;
-		mlx_put_image_to_window(window->mlx, window->window,
-					window->img, 0, 0);
 	}
+	mlx_put_image_to_window(window->mlx, window->window, window->img, 0, 0);
 	//write(1, "here\n", 5);
 	// printf("angle change %f\n", M_PI / 3 / 1280);
 	// printf("angle is %f dir_x %f dir_y %f step_x is %f step_y is %f tan is %f\n", r, window->player->dir_x, window->player->dir_y, step_x, step_y, user_tan);
