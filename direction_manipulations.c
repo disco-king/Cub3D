@@ -61,6 +61,7 @@ void	change_dir(t_window *window, int keycode)
 	{	
 		//draw_all_rays(window, 649);
 		window->player->angle += M_PI_4 / 12;
+		//window->player->angle = fix_angle(window->player->angle);
 		//find_end_points(window);
 		//draw_all_rays(window, 160000);
 		//new_engine_start(window);
@@ -69,6 +70,7 @@ void	change_dir(t_window *window, int keycode)
 	{
 		//draw_all_rays(window, 649);
 		window->player->angle -= M_PI_4 / 12;
+		//window->player->angle = fix_angle(window->player->angle);
 		// if (window->player->angle == M_PI * 2)
 		// 	window->player->angle = 0;
 		//find_end_points(window);
