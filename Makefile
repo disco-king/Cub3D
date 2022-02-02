@@ -5,11 +5,11 @@ SOURCE = main.c start_events.c draw_map.c simple_hooks.c draw_ray_on_map.c \
 
 CC = gcc
 
-# CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 # LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
-LFLAGS = libmlx_Linux.a -lXext -lX11 -lm
+LFLAGS = -lmlx_Linux -lXext -lX11 -lm
 
 HEADER = raycast.h
 
@@ -20,7 +20,7 @@ INCLUDE = raycast.h
 OBJS = $(SOURCE:.c=.o)
 
 $(NAME): $(OBJS) $(HEADER)
-	$(CC) -g $(OBJS) $(LFLAGS) -o $(NAME)
+	$(CC) -g $(OBJS) $(FLAGS) $(LFLAGS) -o $(NAME)
 
 all: $(NAME)
 
