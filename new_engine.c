@@ -81,7 +81,7 @@ void	new_engine_start(t_window *window)
 		distance_hor = 100000;
 		window->color = 160000;
 		user_tan = tan(r);
-		window->side = 1;
+		window->side = 0;
 		//printf("distance vert is %f user_tan in vertical is %f and r is %f\n",distance_vert, user_tan, r);
 		if (cos(r) > 0.001)
 		{
