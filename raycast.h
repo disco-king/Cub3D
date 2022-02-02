@@ -67,6 +67,7 @@ typedef struct s_window
 	float		camera_angle;
 	int			x_border;
 	int			y_border;
+	int			side;
 }	t_window;
 
 

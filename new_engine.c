@@ -1,5 +1,19 @@
 #include "raycast.h"
 
+void	choose_color(t_window *window)
+{
+	if (window->side == 0)
+	{
+		if (window->player->y > window->player->dir_y)
+			window->color += 200;
+	}
+	if (window->side == 1)
+	{
+		if (window->player->x > window->player->dir_x)
+			window->color -= 200;
+	}
+}
+
 float	fix_angle(float angle)
 {
 	if (angle >= 2 * M_PI)
@@ -18,6 +32,7 @@ int	check_borders(t_window *window)
 	mx = (int)window->player->dir_x;
 	my = (int)window->player->dir_y;
 	mp = my * window->x_border + mx;
+	//printf("mp is %d %d\n", mp, window->x_border * window->y_border);
 	// if (mx > window->x_border || my > window->y_border)
 	// 	return (0);
 	if (mp > 0 && mp < window->x_border * window->y_border)
@@ -27,7 +42,7 @@ int	check_borders(t_window *window)
 
 void	new_engine_start(t_window *window)
 {
-	double	r;
+	float	r;
 	float	user_tan;
 	float	step_x;
 	float	step_y;
@@ -56,6 +71,7 @@ void	new_engine_start(t_window *window)
 		distance_hor = 100000;
 		window->color = 160000;
 		user_tan = tan(r);
+		window->side = 1;
 		//printf("distance vert is %f user_tan in vertical is %f and r is %f\n",distance_vert, user_tan, r);
 		if (cos(r) > 0.001)
 		{
@@ -72,6 +88,8 @@ void	new_engine_start(t_window *window)
 				* user_tan + window->player->y;
 			step_x = -1;
 			step_y = -step_x * user_tan;
+			//printf("here dir_x %f dir_y %f step_x %f step_y %f\n",
+				//window->player->dir_x, window->player->dir_y, step_x, step_y);
 		}
 		else
 		{
@@ -80,15 +98,17 @@ void	new_engine_start(t_window *window)
 			hit = 1;
 		}
 		i = 0;
-		while (!hit && i < window->x_border)
+		while (!hit && i <= window->x_border)
 		{
-			//printf("nearest wall %f %f \n", window->player->dir_x, window->player->dir_y);
+			//printf("nearest wall %d %d \n", (int)window->player->dir_x, (int)window->player->dir_y);
+			// printf("char is %c\n", window->map[(int)window->player->dir_y][(int)window->player->dir_x]);
 			if (check_borders(window))
 				if (window->player->dir_x < 0 || window->player->dir_y < 0
 					|| window->map[(int)window->player->dir_y][(int)window->player->dir_x] == '1')
 				{
 					distance_vert = cos(r) * (window->player->dir_x - window->player->x)
 						- sin(r) * (window->player->dir_y - window->player->y);
+					printf("here %f\n", distance_vert);
 					hit = 1;
 				}
 			if (!hit)
@@ -96,7 +116,7 @@ void	new_engine_start(t_window *window)
 				i++;
 				window->player->dir_x += step_x;
 				window->player->dir_y += step_y;
-				distance_vert = 100000;
+				//distance_vert = 100000;
 			}
 		}
 		//printf("i is %d\n", i);
@@ -105,7 +125,7 @@ void	new_engine_start(t_window *window)
 		v_y = window->player->dir_y;
 		user_tan = 1 / user_tan;
 		hit = 0;
-		// printf("distance vert is %f user_tan in horizontal is %f\n", distance_vert, user_tan);
+		//printf("distance vert is %f user_tan in horizontal is %f\n", distance_vert, user_tan);
 		// printf("direction after vert %f %f\n",window->player->dir_x, window->player->dir_y);
 		if (sin(r) > 0.001)
 		{
@@ -130,7 +150,7 @@ void	new_engine_start(t_window *window)
 			hit = 1;
 		}
 		i = 0;
-		while (!hit && i < window->y_border)
+		while (!hit && i <= window->y_border)
 		{
 			//printf("dir_x %f dir_y %f \n",window->player->dir_x, window->player->dir_y);
 			if (check_borders(window))
@@ -148,12 +168,12 @@ void	new_engine_start(t_window *window)
 				i++;
 				window->player->dir_x += step_x;
 				window->player->dir_y += step_y;
-				distance_hor = 100000;
+				//distance_hor = 100000;
 			}
 		}
 
 		// printf("direction after hor %f %f\n",window->player->dir_x, window->player->dir_y);
-		// printf("distance hor %f is distance vert is %f\n", distance_hor, distance_vert);
+		//printf("distance hor %f is distance vert is %f\n", distance_hor, distance_vert);
 		if (distance_vert < distance_hor)
 		{
 			//printf("distance vert has been chosen\n");
@@ -161,13 +181,16 @@ void	new_engine_start(t_window *window)
 			window->player->dir_y = v_y;
 			window->distance = distance_vert;
 			window->color = 160100;
+			window->side = 1;
 		}
 		else
 			window->distance = distance_hor;
 		// window->camera_angle = window->player->angle - r;
 		// window->camera_angle = fix_angle(window->camera_angle);
-		window->distance = cos(r) * window->distance;
+		window->distance = cos(r - window->player->angle) * window->distance;
 		//printf("r is %f\n", r);
+		choose_color(window);
+		//printf("color is %d\n",window->color);
 		draw_wall(window, x);
 		x += 1;
 		r -= M_PI / 3 / 1280;

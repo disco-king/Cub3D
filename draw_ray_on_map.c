@@ -38,18 +38,19 @@ void	vert_points(t_window *window)
 	i = 0;
 	// window->player->dir_x = window->player->x;
 	// window->player->dir_y = window->player->y;
-	while (1)
+	while (i < window->y_border)
 	{
 		window->player->dir_x = window->player->x
 			+ 1 * i;
 		window->player->dir_y = window->player->y
 			+ i * sin(window->player->angle);
-		if (window->player->dir_x < 0 || window->player->dir_y < 0
-			|| !window->map[(int)window->player->dir_y]
-			[(int)window->player->dir_x]
-			|| window->map[(int)window->player->dir_y]
-			[(int)window->player->dir_x] == '1')
-			break ;
+		if (check_borders(window))
+			if (window->player->dir_x < 0 || window->player->dir_y < 0
+				|| !window->map[(int)window->player->dir_y]
+				[(int)window->player->dir_x]
+				|| window->map[(int)window->player->dir_y]
+				[(int)window->player->dir_x] == '1')
+				break ;
 		i++;
 	}
 	window->distance = count_distance(window);
@@ -62,18 +63,19 @@ void	hor_points(t_window *window)
 	i = 0;
 	// window->player->dir_x = window->player->x;
 	// window->player->dir_y = window->player->y;
-	while (1)
+	while (i < window->x_border)
 	{
 		window->player->dir_x = window->player->x
 			+ i * cos(window->player->angle);
 		window->player->dir_y = window->player->y
 			- 1 * i;
-		if (window->player->dir_x < 0 || window->player->dir_y < 0
-			|| !window->map[(int)window->player->dir_y]
-			[(int)window->player->dir_x]
-			|| window->map[(int)window->player->dir_y]
-			[(int)window->player->dir_x] == '1')
-			break ;
+		if (check_borders(window))
+			if (window->player->dir_x < 0 || window->player->dir_y < 0
+				|| !window->map[(int)window->player->dir_y]
+				[(int)window->player->dir_x]
+				|| window->map[(int)window->player->dir_y]
+				[(int)window->player->dir_x] == '1')
+				break ;
 		i++;
 	}
 	window->distance = count_distance(window);

@@ -21,7 +21,7 @@ int	key_hook(int keycode, t_window *window)
 	//scale_map(window->player->y * 50, window->player->x * 50, window, 649);
 	printf("keycode is %d\n", keycode);
 	if ((keycode == A) && window->player->x > 1
-		&& window->map[(int)window->player->y - 1][(int)window->player->x] != '1')
+		&& window->map[(int)(window->player->y - 1.5)][(int)window->player->x] != '1')
 		window->player->y -= 1;
 	else if ((keycode == W) && window->player->y > 1
 		&& window->map[(int)window->player->y][(int)window->player->x + 1] != '1')
