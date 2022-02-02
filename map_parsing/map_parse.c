@@ -165,16 +165,17 @@ char *add_spaces(char *src, int max)
 	return(ret);
 }
 
-char **lst_to_arr(t_list *lst)
+char **lst_to_arr(t_list *lst, int *height, int *width)
 {
 	int i = 0;
-	int max_len = get_max_len(lst);
+	*width = get_max_len(lst);
+	*height = ft_lstsize(lst);
 
-	char **ret = malloc(sizeof(char *) * (ft_lstsize(lst) + 1));
+	char **ret = malloc(sizeof(char *) * (*height + 1));
 	while(lst)
 	{
-		if(ft_strlen(lst->content) < max_len)
-			ret[i] = add_spaces(lst->content, max_len);
+		if(ft_strlen(lst->content) < *width)
+			ret[i] = add_spaces(lst->content, *width);
 		else
 			ret[i] = ft_strdup(lst->content);
 		if(!ret[i])
@@ -186,7 +187,7 @@ char **lst_to_arr(t_list *lst)
 	return(ret);
 }
 
-char **check_map(int fd)
+char **check_map(int fd, int *map_height, int *map_width)
 {
 	char **map;
 	t_list *map_lines;
@@ -198,7 +199,7 @@ char **check_map(int fd)
 		ft_lstfree(map_lines);
 		return(NULL);
 	}
-	map = lst_to_arr(map_lines);
+	map = lst_to_arr(map_lines, map_height, map_width);
 	ft_lstfree(map_lines);
 	return(map);
 }

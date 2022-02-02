@@ -12,26 +12,60 @@
 
 #include "raycast.h"
 
-int	main(void)
+char **map_parsing(char *filename, t_params *params)
 {
+	char **map;
+
+	init_params(params);
+	int fd = open(filename, O_RDONLY);
+	if(fd < 0)
+	{
+		printf("Fd error!\n");
+		return(NULL);
+	}
+	if(get_params(params, fd))
+	{
+		printf("Params invalid!\n");
+		return(NULL);
+	}
+
+	printf("north path %s\nwest path %s\nsouth path %s\neast path %s\n",
+		params->no_addr, params->we_addr, params->so_addr, params->ea_addr);
+	printf("floor %d\nceiling %d\n", params->f_col, params->c_col);
+
+	map = check_map(fd, &(params->height), &(params->width));
+	if(!map)
+	{
+		printf("Map invalid!\n");
+		exit(1);
+	}
+	printf("height %d width %d\n", params->height, params->width);
+	char **buff = map;
+	while (*buff)
+	{
+		printf("%s$\n", *buff);
+		buff++;
+	}
+	
+	return(map);
+}
+
+int	main(int argc, char **argv)
+{
+	t_params params;
 	t_window	window;
 	char		**map;
 
 	window.player = malloc(sizeof(t_player));
-	map = malloc(sizeof(char *) * 1000);
-	map[0] = "1111111111111";
-	map[1] = "1000000100001";
-	map[2] = "1000000100001";
-	map[3] = "1N00000000001";
-	map[4] = "1000000000001";
-	map[5] = "1000000000001";
-	map[6] = "1111111111111";
-	map[7] = NULL;
+	map = map_parsing(argv[1], &params);
+	if(!map)
+		exit(0);
 	window.map = map;
 	window.player->angle = 0;
-	/*need map sizes*/
-	window.x_border = 14;
-	window.y_border = 7;
+	write(2, "assigned angle\n", 15);
+	/*map sizes now assigned from params (see parsing)*/
+	window.x_border = params.width;
+	window.y_border = params.height;
 	init_window(&window, map);
 	return (0);
 }

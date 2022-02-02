@@ -26,12 +26,13 @@ int main(int argc, char const *argv[])
 		params.no_addr, params.we_addr, params.so_addr, params.ea_addr);
 	printf("floor %d\nceiling %d\n", params.f_col, params.c_col);
 
-	map = check_map(fd);
+	map = check_map(fd, &(params.height), &(params.width));
 	if(!map)
 	{
 		printf("Map invalid!\n");
 		exit(1);
 	}
+	printf("height %d width %d\n", params.height, params.width);
 	char **buff = map;
 	while (*buff)
 	{

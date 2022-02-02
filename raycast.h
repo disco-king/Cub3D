@@ -13,6 +13,7 @@
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
+# include "./map_parsing/parse.h"
 # include <math.h>
 # include <mlx.h>
 # include <unistd.h>
