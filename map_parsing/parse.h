@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include "./libft/libft.h"
 
+# define MAP ".cub"
+# define TEXT ".xpm"
+
 typedef struct s_params{
 	int c_col;//ceiling color
 	int f_col;//floor color
@@ -28,3 +31,4 @@ int get_max_len(t_list *lst);
 int check_column(t_list *lst, int i);
 int check_line(const char *line);
 int get_value(char c, int *character);
+int check_name(char *name, int map);

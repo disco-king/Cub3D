@@ -16,6 +16,11 @@ char **map_parsing(char *filename, t_params *params)
 {
 	char **map;
 
+	if(check_name(filename, 1))
+	{
+		printf("Wrong file!\n");
+		return(NULL);
+	}
 	init_params(params);
 	int fd = open(filename, O_RDONLY);
 	if(fd < 0)
@@ -62,7 +67,6 @@ int	main(int argc, char **argv)
 		exit(0);
 	window.map = map;
 	window.player->angle = 0;
-	write(2, "assigned angle\n", 15);
 	/*map sizes now assigned from params (see parsing)*/
 	window.x_border = params.width;
 	window.y_border = params.height;
