@@ -51,9 +51,7 @@ void	new_engine_start(t_window *window)
 	int		x;
 	int		i;
 	void	*image;
-	t_data img;
 
-	window->img = &img;
 	i = 0;
 	step_x = 0;
 	step_y = 0;
@@ -71,6 +69,7 @@ void	new_engine_start(t_window *window)
 		exit(1);
 	}
 	color_window(window);
+	printf("x %f y %f angle %f\n", window->player->x, window->player->y, r);
 	while (x < 1280)
 	{
 		distance_vert = 100000;
@@ -78,7 +77,7 @@ void	new_engine_start(t_window *window)
 		window->color = 160000;
 		user_tan = tan(r);
 		window->side = 0;
-		//printf("distance vert is %f user_tan in vertical is %f and r is %f\n",distance_vert, user_tan, r);
+		// printf("user_tan = %f cos = %f r = %f\n", user_tan, cos(r), r);
 		if (cos(r) > 0.001)
 		{
 			window->player->dir_x = window->player->x + 1;
@@ -94,8 +93,6 @@ void	new_engine_start(t_window *window)
 				* user_tan + window->player->y;
 			step_x = -1;
 			step_y = -step_x * user_tan;
-			//printf("here dir_x %f dir_y %f step_x %f step_y %f\n",
-				//window->player->dir_x, window->player->dir_y, step_x, step_y);
 		}
 		else
 		{
@@ -114,7 +111,7 @@ void	new_engine_start(t_window *window)
 				{
 					distance_vert = cos(r) * (window->player->dir_x - window->player->x)
 						- sin(r) * (window->player->dir_y - window->player->y);
-					printf("here %f\n", distance_vert);
+					// printf("here %f\n", distance_vert);
 					hit = 1;
 				}
 			if (!hit)
@@ -122,10 +119,8 @@ void	new_engine_start(t_window *window)
 				i++;
 				window->player->dir_x += step_x;
 				window->player->dir_y += step_y;
-				//distance_vert = 100000;
 			}
 		}
-		//printf("i is %d\n", i);
 		i = 0;
 		v_x = window->player->dir_x;
 		v_y = window->player->dir_y;
@@ -167,14 +162,11 @@ void	new_engine_start(t_window *window)
 						- sin(r) * (window->player->dir_y - window->player->y);
 					hit = 1;
 				}
-			// else
-			// {
 			if (!hit)
 			{
 				i++;
 				window->player->dir_x += step_x;
 				window->player->dir_y += step_y;
-				//distance_hor = 100000;
 			}
 		}
 
@@ -182,7 +174,6 @@ void	new_engine_start(t_window *window)
 		//printf("distance hor %f is distance vert is %f\n", distance_hor, distance_vert);
 		if (distance_vert < distance_hor)
 		{
-			//printf("distance vert has been chosen\n");
 			window->player->dir_x = v_x;
 			window->player->dir_y = v_y;
 			window->distance = distance_vert;
@@ -191,12 +182,8 @@ void	new_engine_start(t_window *window)
 		}
 		else
 			window->distance = distance_hor;
-		// window->camera_angle = window->player->angle - r;
-		// window->camera_angle = fix_angle(window->camera_angle);
 		window->distance = cos(r - window->player->angle) * window->distance;
-		//printf("r is %f\n", r);
 		choose_color(window);
-		//printf("color is %d\n",window->color);
 		draw_wall(window, x);
 		x += 1;
 		r -= M_PI / 3 / 1280;
