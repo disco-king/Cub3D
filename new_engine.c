@@ -32,9 +32,6 @@ int	check_borders(t_window *window)
 	mx = (int)window->player->dir_x;
 	my = (int)window->player->dir_y;
 	mp = my * window->x_border + mx;
-	//printf("mp is %d %d\n", mp, window->x_border * window->y_border);
-	// if (mx > window->x_border || my > window->y_border)
-	// 	return (0);
 	if (mp > 0 && mp < window->x_border * window->y_border)
 		return (1);
 	return (0);
@@ -62,7 +59,6 @@ void	new_engine_start(t_window *window)
 	step_y = 0;
 	hit = 0;
 	r = window->player->angle;
-	//printf("%f\n", window->player->angle);
 	r += M_PI / 6;
 	r = fix_angle(r);
 	x = 0;

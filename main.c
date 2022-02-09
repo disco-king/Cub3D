@@ -34,24 +34,12 @@ char **map_parsing(char *filename, t_params *params)
 		return(NULL);
 	}
 
-	printf("north path %s\nwest path %s\nsouth path %s\neast path %s\n",
-		params->no_addr, params->we_addr, params->so_addr, params->ea_addr);
-	printf("floor %d\nceiling %d\n", params->f_col, params->c_col);
-
 	map = check_map(fd, &(params->height), &(params->width));
 	if(!map)
 	{
 		printf("Map invalid!\n");
 		exit(1);
 	}
-	printf("height %d width %d\n", params->height, params->width);
-	char **buff = map;
-	while (*buff)
-	{
-		printf("%s$\n", *buff);
-		buff++;
-	}
-	
 	return(map);
 }
 
