@@ -93,6 +93,6 @@ void	init_window(t_window *window, char **map)
 	window->ceiling_color = 649;
 	find_start_pos_and_dir(map, window);
 	new_engine_start(window);
-	mlx_key_hook(window->window, key_hook, window);
+	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_loop(window->mlx);
 }

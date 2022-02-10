@@ -80,11 +80,10 @@ void	init_window(t_window *window, char **map);
 void	scale_map(int i, int j, t_window *window, int color);
 
 /*simple hoooks*/
-
+int	key_release(int keycode, t_window *window);
 int		key_hook(int keycode, t_window *window);
 
 /*draw_ray on map*/
-
 void	count_ray(t_window *window, float xend, float yend, int color);
 void	find_end_points(t_window *window);
 
