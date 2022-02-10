@@ -81,18 +81,16 @@ void	new_engine_start(t_window *window)
 		if (cos(r) > 0.001)
 		{
 			window->player->dir_x = window->player->x + 1;
-			window->player->dir_y = (window->player->x - window->player->dir_x)
-				* user_tan + window->player->y;
+			window->player->dir_y = -1 * user_tan + window->player->y;
 			step_x = 1;
-			step_y = -step_x * user_tan;
+			step_y = -1 * user_tan;
 		}
 		else if (cos(r) < -0.001)
 		{
 			window->player->dir_x = window->player->x - 0.0001;
-			window->player->dir_y = (window->player->x - window->player->dir_x)
-				* user_tan + window->player->y;
+			window->player->dir_y = 0.0001 * user_tan + window->player->y;
 			step_x = -1;
-			step_y = -step_x * user_tan;
+			step_y = 1 * user_tan;
 		}
 		else
 		{
@@ -131,18 +129,16 @@ void	new_engine_start(t_window *window)
 		if (sin(r) > 0.001)
 		{
 			window->player->dir_y = window->player->y - 0.0001;
-			window->player->dir_x = (window->player->y - window->player->dir_y)
-				* user_tan + window->player->x;
+			window->player->dir_x = 0.0001 * user_tan + window->player->x;
 			step_y = -1;
-			step_x = -step_y * user_tan;
+			step_x = 1 * user_tan;
 		}
 		else if (sin(r) < -0.001)
 		{
 			window->player->dir_y = window->player->y + 1;
-			window->player->dir_x = (window->player->y - window->player->dir_y)
-				* user_tan + window->player->x;
+			window->player->dir_x = -1 * user_tan + window->player->x;
 			step_y = 1;
-			step_x = -step_y * user_tan;
+			step_x = -1 * user_tan;
 		}
 		else
 		{

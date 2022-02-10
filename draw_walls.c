@@ -38,11 +38,7 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 {
 	int	draw_start;
 	int	draw_end;
-	int	j;
-	int	i;
 
-	i = 0;
-	j = 0;
 	draw_start = -wall_height / 2 + height / 2;
 	draw_end = wall_height / 2 + height / 2;
 	if (draw_start < 0)
@@ -52,7 +48,6 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 	while (draw_start < draw_end)
 	{
 			pix_to_img(window->img, x, draw_start, window->color);
-		j = 0;
 		draw_start++;
 	}
 }
