@@ -36,7 +36,23 @@ typedef struct s_map
 	int		y;
 }	t_map;
 
-typedef struct	s_data {
+typedef	struct s_textures
+{
+	void	*no;
+	void	*ea;
+	void	*so;
+	void	*we;
+	int		*width;
+	int		*height;
+	int		text_x;
+	int		text_y;
+	float		wall_x;
+	int		wall_y;
+	int		text_width;
+	int		text_height;
+}	t_textures;
+
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -62,13 +78,16 @@ typedef struct s_window
 	void		*window;
 	int			floor_color;
 	int			ceiling_color;
-	int			color;
+	long			color;
 	t_data		*img;
 	float		distance;
 	float		camera_angle;
 	int			x_border;
 	int			y_border;
 	int			side;
+	int			current_x;
+	t_params	*params;
+	t_textures	*textures;
 }	t_window;
 
 
@@ -100,4 +119,9 @@ void	new_engine_start(t_window *window);
 float	count_distance(t_window *window);
 int	check_borders(t_window *window);
 float	fix_angle(float angle);
+
+/*textures*/
+void	get_texture(t_window *window);
+void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_end);
+void	calc_texture(t_window *window);
 #endif
