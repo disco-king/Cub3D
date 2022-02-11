@@ -45,11 +45,13 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 		draw_start = 0;
 	if (draw_end >= height)
 		draw_end = height - 1;
-	while (draw_start < draw_end)
-	{
-			pix_to_img(window->img, x, draw_start, window->color);
-		draw_start++;
-	}
+	window->current_x = x;
+	// while (draw_start < draw_end)
+	// {
+		calc_texture_y(window, wall_height, draw_start, draw_end);
+			//pix_to_img(window->img, x, draw_start, window->color);
+		//draw_start++;
+//	}
 }
 
 

@@ -61,6 +61,7 @@ int	key_hook(int keycode, t_window *window)
 {
 	int move[2];//x and y of the point we'll stand at after the move
 	printf("keycode is %d\n", keycode);
+	mlx_clear_window(window->mlx, window->window);
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(window->mlx, window->window);

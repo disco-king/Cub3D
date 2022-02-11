@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	window.player = malloc(sizeof(t_player));
 	window.params = malloc(sizeof(t_params));
 	window.textures = malloc(sizeof(t_textures));
-	//window.img = malloc(sizeof(t_data));
+	window.img = malloc(sizeof(t_data));
 	map = map_parsing(argv[1], &params);
 	window.params = &params;
 	if(!map)
@@ -62,7 +62,6 @@ int	main(int argc, char **argv)
 	/*map sizes now assigned from params (see parsing)*/
 	window.x_border = params.width;
 	window.y_border = params.height;
-	//printf("width %d height %d\n", window.x_border, window.y_border);
 	init_window(&window, map);
 	return (0);
 }
