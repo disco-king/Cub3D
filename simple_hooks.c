@@ -37,7 +37,8 @@ void get_move(t_player *player, int move[2], int code)//set move values to one o
 	}
 	float angle = fix_angle(player->angle + step_dir(code));
 	printf("checking angle %f\n", angle);
-	if(angle >= 1.18 && angle < 1.96)//this series of ifs determines x value
+	if((angle >= 1.18 && angle < 1.96)
+		|| (angle >= 4.32 && angle < 5.11))//this series of ifs determines x value
 		move[0] = 0;
 	else if(angle >= 1.96 && angle < 4.34)
 		move[0] = -1;

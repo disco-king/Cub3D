@@ -99,6 +99,6 @@ void	init_window(t_window *window, char **map)
 	//find_end_points(window);
 	get_texture(window);
 	new_engine_start(window);
-	mlx_key_hook(window->window, key_hook, window);
+	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_loop(window->mlx);
 }
