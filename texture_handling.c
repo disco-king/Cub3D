@@ -14,7 +14,7 @@ void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_
 	step = (float)window->textures->text_height / (wall_height);
 	text_pos = (draw_start - 720 / 2 + wall_height / 2) * step;
 	y = draw_start;
-	adr = (int *)mlx_get_data_addr(window->textures->no, &bpp,
+	adr = (int *) mlx_get_data_addr(window->textures->no, &bpp,
 			&l, &endian);
 	while (y < draw_end)
 	{
@@ -32,8 +32,8 @@ void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_
 		// window->img->endian = endian;
 		// window->img->line_length = l;
 		// window->img->img = window->textures->no;
-		//pix_to_img(&img, window->current_x, y, window->color);
-		mlx_pixel_put(window->mlx, window->window, window->current_x, y, window->color);
+		pix_to_img(window->img, window->current_x, y, window->color);
+		// mlx_pixel_put(window->mlx, window->window, window->current_x, y, window->color);
 		y++;
 	}
 }
