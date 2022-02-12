@@ -1,6 +1,6 @@
-NO ./grey.xpm
-SO ./brick.xpm
-WE ./brick.xpm
+NO ./banner.xpm
+SO ./grey.xpm
+WE ./wood.xpm
 EA ./brick.xpm
 
 F 220,100,0

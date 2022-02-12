@@ -1,5 +1,23 @@
 #include "raycast.h"
 
+
+char	*choose_texture(t_window *window)
+{
+	if (!window->side)
+	{
+		if (window->player->y > window->player->dir_y)
+			return (window->textures->so);
+		return (window->textures->no);
+	}
+	if (window->side)
+	{
+		if (window->player->x < window->player->dir_x)
+			return (window->textures->ea);
+		return (window->textures->we);
+	}
+	return (window->textures->no);
+}
+
 void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_end)
 {
 	float	step;
@@ -14,7 +32,7 @@ void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_
 	step = (float)window->textures->text_height / (wall_height);
 	text_pos = (draw_start - 720 / 2 + wall_height / 2) * step;
 	y = draw_start;
-	adr = (int *) mlx_get_data_addr(window->textures->no, &bpp,
+	adr = (int *) mlx_get_data_addr(choose_texture(window), &bpp,
 			&l, &endian);
 	while (y < draw_end)
 	{
@@ -43,18 +61,18 @@ void	calc_texture(t_window *window)
 	//printf("ray pos %f %f\n", window->player->dir_x, window->player->dir_y);
 	if (window->side)
 		window->textures->wall_x = window->player->y
-			+ window->distance * window->player->dir_y;
+			+ window->player->dir_y;
 	else if (!window->side)
 		window->textures->wall_x = window->player->x
-			+ window->distance * window->player->dir_x;
+			+ window->player->dir_x;
 	window->textures->wall_x -= (floor)(window->textures->wall_x);
 	window->textures->text_x = (int)(window->textures->wall_x
 			* window->textures->text_width);
-	// if (window->side && window->player->dir_x > 0)
-	// //printf("texture x %d %d\n", window->textures->text_width, window->textures->text_x);
-	// 	window->textures->text_x = window->textures->text_width - window->textures->text_x - 1;
-	// if (!window->side && window->player->dir_y < 0)
-	// 	window->textures->text_x = window->textures->text_width - window->textures->text_x - 1;
+	if (window->side && window->player->dir_x > 0)
+	//printf("texture x %d %d\n", window->textures->text_width, window->textures->text_x);
+		window->textures->text_x = window->textures->text_width - window->textures->text_x - 1;
+	if (!window->side && window->player->dir_y < 0)
+		window->textures->text_x = window->textures->text_width - window->textures->text_x - 1;
 	// if (!window->side)
 	// 	window->textures->text_x = (int)(window->player->dir_x / 2.0) % window->textures->text_width;
 	// else
@@ -71,15 +89,15 @@ void	get_texture(t_window *window)
 			window->params->no_addr,
 			&width, &height);
 	//write(1, "here\n", 5);
-	// window->textures->ea = mlx_xpm_file_to_image(window->mlx,
-	// 		window->params->ea_addr,
-	// 		&width, &height);
-	// window->textures->so = mlx_xpm_file_to_image(window->mlx,
-	// 		window->params->so_addr,
-	// 		&width, &height);
-	// window->textures->we = mlx_xpm_file_to_image(window->mlx,
-	// 		window->params->we_addr,
-	// 		&width, &height);
+	window->textures->ea = mlx_xpm_file_to_image(window->mlx,
+			window->params->ea_addr,
+			&width, &height);
+	window->textures->so = mlx_xpm_file_to_image(window->mlx,
+			window->params->so_addr,
+			&width, &height);
+	window->textures->we = mlx_xpm_file_to_image(window->mlx,
+			window->params->we_addr,
+			&width, &height);
 	window->textures->text_width = width;
 	window->textures->text_height = height;
 	printf("w and h %d %d\n", width, height);
