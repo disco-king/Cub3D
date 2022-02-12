@@ -194,7 +194,7 @@ void	new_engine_start(t_window *window)
 		// window->camera_angle = fix_angle(window->camera_angle);
 		window->distance = cos(r - window->player->angle) * window->distance;
 		//printf("r is %f\n", r);
-		choose_color(window);
+		//choose_color(window);
 		//printf("color is %d\n",window->color);
 		draw_wall(window, x);
 		x += 1;
