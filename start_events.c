@@ -92,11 +92,6 @@ void	init_window(t_window *window, char **map)
 	window->floor_color = 1021;
 	window->ceiling_color = 649;
 	find_start_pos_and_dir(map, window);
-	//draw_big_map(window, map);
-	// window->player->dir_x = window->player->x;
-	// window->player->dir_y = window->player->y;
-	//change_dir(window);
-	//find_end_points(window);
 	get_texture(window);
 	new_engine_start(window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);

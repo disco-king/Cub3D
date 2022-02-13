@@ -32,6 +32,8 @@
 # define RA 65363
 # define WIN_Y 720
 # define WIN_X 1280
+# define STEP 1 //full step we use now
+// # define STEP 0.4 //partial step that may solve movement problems
 
 typedef struct s_map
 {
