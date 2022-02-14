@@ -25,14 +25,14 @@ float	count_distance(t_window *window)
 }
 
 
-int	count_color(t_window *window, t_data *image)
-{
-	int	width;
-	int	height;
+// int	count_color(t_window *window, t_data *image)
+// {
+// 	int	width;
+// 	int	height;
 	
-	image->img = mlx_xpm_file_to_image(window->mlx, "1.xpm", &width, &height);
-	return (0);
-}
+// 	image->img = mlx_xpm_file_to_image(window->mlx, "1.xpm", &width, &height);
+// 	return (0);
+// }
 
 void	calc_pixel(t_window *window, int wall_height, int height, int x)
 {

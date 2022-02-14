@@ -59,8 +59,10 @@ typedef	struct s_textures
 }	t_textures;
 
 typedef struct s_data {
-	void	*img;
-	char	*addr;
+	void	*img[2];
+	char	*addr[2];
+	void *cur_img;
+	char *cur_addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -82,8 +84,6 @@ typedef struct s_window
 	char		**map;
 	void		*mlx;
 	void		*window;
-	int			floor_color;
-	int			ceiling_color;
 	long			color;
 	t_data		*img;
 	float		distance;
@@ -117,7 +117,7 @@ void	draw_wall(t_window *window, int x);
 void	color_window(t_window *window);
 
 /*faster drawing section*/
-void get_new_image(void **new, t_window *win);
+void get_new_image(void **new1, void **new2, t_window *win);
 void pix_to_img(t_data *data, int x, int y, int color);
 
 void	new_engine_start(t_window *window);

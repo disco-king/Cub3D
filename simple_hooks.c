@@ -57,8 +57,6 @@ alternative codes are added for testability on linux*/
 int	key_hook(int keycode, t_window *window)
 {
  	float move[2];//x and y of the point we'll stand at after the move
-	// printf("keycode is %d\n", keycode);
-	// mlx_clear_window(window->mlx, window->window);
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(window->mlx, window->window);
@@ -75,7 +73,6 @@ int	key_hook(int keycode, t_window *window)
 	if(window->map[(int)(window->player->y + move[1])][(int)(window->player->x + move[0])] != '0' &&
 		window->map[(int)(window->player->y + move[1])][(int)(window->player->x + move[0])] != 'N')
 		return(0);
-	printf("current x %f y %f\n", window->player->x, window->player->y);
 	window->player->y += move[1];
 	window->player->x += move[0];
 	new_engine_start(window);

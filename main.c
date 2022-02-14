@@ -50,9 +50,7 @@ int	main(int argc, char **argv)
 	char		**map;
 
 	window.player = malloc(sizeof(t_player));
-	window.params = malloc(sizeof(t_params));
 	window.textures = malloc(sizeof(t_textures));
-	window.img = malloc(sizeof(t_data));
 	map = map_parsing(argv[1], &params);
 	window.params = &params;
 	if(!map)

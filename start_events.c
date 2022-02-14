@@ -23,14 +23,14 @@ void	color_window(t_window *window)
 	{
 		while (x++ <= 1280)
 			pix_to_img(window->img, x, y,
-						window->ceiling_color);
+						window->params->c_col);
 		x = 0;
 	}
 	while (y++ <= 720)
 	{
 		while (x++ <= 1280)
 			pix_to_img(window->img, x, y,
-						window->floor_color);
+						window->params->f_col);
 		x = 0;
 	}
 }
@@ -86,11 +86,15 @@ void	draw_big_map(t_window *window, char **map)
 void	init_window(t_window *window, char **map)
 {
 	t_data img;
-	window->img = &img;
+	void *image1;
+	void *image2;
+	
 	window->mlx = mlx_init();
+	window->img = &img;
+	get_new_image(&image1, &image2, window);
+	img.img[0] = image1;
+	img.img[1] = image2;
 	window->window = mlx_new_window(window->mlx, 1280, 720, "cub3d");
-	window->floor_color = 1021;
-	window->ceiling_color = 649;
 	find_start_pos_and_dir(map, window);
 	get_texture(window);
 	new_engine_start(window);
