@@ -35,6 +35,19 @@ void	color_window(t_window *window)
 	}
 }
 
+void	choose_start_dir(t_window *window, char c)
+{
+	if (c == 'N')
+		window->player->angle = M_PI_2;
+	if (c == 'E')
+		window->player->angle = 0;
+	if (c == 'W')
+		window->player->angle = M_PI;
+	if (c == 'S')
+		window->player->angle = M_PI + M_PI_2;
+}
+
+
 void	find_start_pos_and_dir(char **map, t_window *window)
 {
 	int	i;
@@ -46,11 +59,13 @@ void	find_start_pos_and_dir(char **map, t_window *window)
 	{
 		while (map[i][j])
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] == 'N')
+			if (map[i][j] != '1' && map[i][j] != '0' && (map[i][j] == 'N'
+				|| map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == 'S'))
 			{
 				window->player->start_direction = map[i][j];
 				window->player->x = (float)j;
 				window->player->y = (float)i;
+				choose_start_dir(window, map[i][j]);
 			}
 			j++;
 		}

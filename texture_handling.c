@@ -51,11 +51,9 @@ void	calc_texture(t_window *window)
 {
 	//printf("ray pos %f %f\n", window->player->dir_x, window->player->dir_y);
 	if (window->side)
-		window->textures->wall_x = window->player->y
-			+ window->player->dir_y;
+		window->textures->wall_x = window->player->dir_y;
 	else if (!window->side)
-		window->textures->wall_x = window->player->x
-			+ window->player->dir_x;
+		window->textures->wall_x = window->player->dir_x;
 	window->textures->wall_x -= (floor)(window->textures->wall_x);
 	window->textures->text_x = (int)(window->textures->wall_x
 			* window->textures->text_width);
