@@ -27,7 +27,7 @@ float step_dir(int code)
 	return(ret);
 }
 
-void get_move(t_player *player, int move[2], int code)//set move values to one of four options
+void get_move(t_player *player, float move[2], int code)//set move values to one of four options
 {
 	if(code == LA || code == RA)
 	{
@@ -56,7 +56,7 @@ void get_move(t_player *player, int move[2], int code)//set move values to one o
 alternative codes are added for testability on linux*/
 int	key_hook(int keycode, t_window *window)
 {
-	int move[2];//x and y of the point we'll stand at after the move
+ 	float move[2];//x and y of the point we'll stand at after the move
 	// printf("keycode is %d\n", keycode);
 	// mlx_clear_window(window->mlx, window->window);
 	if (keycode == ESC)

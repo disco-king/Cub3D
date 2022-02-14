@@ -81,7 +81,7 @@ void	new_engine_start(t_window *window)
 		//printf("distance vert is %f user_tan in vertical is %f and r is %f\n",distance_vert, user_tan, r);
 		if (cos(r) > 0.001)
 		{
-			window->player->dir_x = window->player->x + 1;
+			window->player->dir_x = (int)window->player->x + 1;
 			window->player->dir_y = (window->player->x - window->player->dir_x)
 				* user_tan + window->player->y;
 			step_x = 1;
@@ -89,7 +89,7 @@ void	new_engine_start(t_window *window)
 		}
 		else if (cos(r) < -0.001)
 		{
-			window->player->dir_x = window->player->x - 0.0001;
+			window->player->dir_x = (int)window->player->x - 0.0001;
 			window->player->dir_y = (window->player->x - window->player->dir_x)
 				* user_tan + window->player->y;
 			step_x = -1;
@@ -134,7 +134,7 @@ void	new_engine_start(t_window *window)
 		// printf("direction after vert %f %f\n",window->player->dir_x, window->player->dir_y);
 		if (sin(r) > 0.001)
 		{
-			window->player->dir_y = window->player->y - 0.0001;
+			window->player->dir_y = (int)window->player->y - 0.0001;
 			window->player->dir_x = (window->player->y - window->player->dir_y)
 				* user_tan + window->player->x;
 			step_y = -1;
@@ -142,7 +142,7 @@ void	new_engine_start(t_window *window)
 		}
 		else if (sin(r) < -0.001)
 		{
-			window->player->dir_y = window->player->y + 1;
+			window->player->dir_y = (int)window->player->y + 1;
 			window->player->dir_x = (window->player->y - window->player->dir_y)
 				* user_tan + window->player->x;
 			step_y = 1;
