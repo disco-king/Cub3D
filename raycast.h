@@ -95,6 +95,7 @@ typedef struct s_window
 	int			side;
 	int			current_x;
 	int			toggle_map;
+	int			mouse_x;
 	t_params	*params;
 	t_textures	*textures;
 }	t_window;
@@ -135,4 +136,8 @@ void	calc_texture(t_window *window);
 
 /*map*/
 void	draw_small_map(t_window *window);
+
+/*mouse view*/
+int	mouse_hook(int x, int y, t_window *window);
+int	set_mouse(int x, int y, t_window *window);
 #endif

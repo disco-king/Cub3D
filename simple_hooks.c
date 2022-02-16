@@ -80,28 +80,25 @@ int	key_hook(int keycode, t_window *window)
 		mlx_destroy_window(window->mlx, window->window);
 		exit(0);
 	}
-	if (keycode != RA && keycode != LA
-		&& keycode != A && keycode != W
-		&& keycode != S && keycode != D
-		&& keycode != A2 && keycode != W2
-		&& keycode != S2 && keycode != D2
-		&& keycode != M && keycode != M2)
-		return (0);
 	if (keycode == M || keycode == M2)
 	{
 		if (!window->toggle_map)
 		{
-			draw_small_map(window);
 			window->toggle_map = 1;
-			return (0);
+			draw_small_map(window);
 		}
 		else
 		{
 			window->toggle_map = 0;
 			new_engine_start(window);
-			return (0);
 		}
 	}
+	if (keycode != RA && keycode != LA
+		&& keycode != A && keycode != W
+		&& keycode != S && keycode != D
+		&& keycode != A2 && keycode != W2
+		&& keycode != S2 && keycode != D2)
+		return (0);
 	change_dir(window, keycode);
 	window->player->angle = fix_angle(window->player->angle);
 	get_move(window->player, move, keycode);
@@ -120,7 +117,10 @@ actual int move x %-10d y %-10d - ",
 	window->map[(int)window->player->y][(int)window->player->x] = '0';
 	window->player->y += move[1];
 	window->player->x += move[0];
-	window->map[(int)window->player->y][(int)window->player->x] = 'P';
+	if (window->map[(int)window->player->y][(int)window->player->x] != '1')
+		window->map[(int)window->player->y][(int)window->player->x] = 'P';
 	new_engine_start(window);
+	if (window->toggle_map)
+		draw_small_map(window);
 	return (0);
 }
