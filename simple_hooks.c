@@ -61,11 +61,20 @@ float border_val(float value)
 	return(value);
 }
 
-/*we need map size in control structure
-alternative codes are added for testability on linux*/
+int check_move(float p_x, float p_y, float *move, char **map)
+{
+
+	if(map[(int)(p_y + move[1])][(int)(p_x + move[0])] == '1'
+		|| map[(int)border_val(p_y + move[1])][(int)border_val(p_x + move[0])] == '1')
+	{
+		return(1);
+	}
+	return(0);
+}
+
 int	key_hook(int keycode, t_window *window)
 {
- 	float move[2];//x and y of the point we'll stand at after the move
+	float move[6];//x and y of the point we'll stand at after the move
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(window->mlx, window->window);
@@ -76,9 +85,9 @@ int	key_hook(int keycode, t_window *window)
 		&& keycode != S && keycode != D
 		&& keycode != A2 && keycode != W2
 		&& keycode != S2 && keycode != D2
-		&& keycode != M)
+		&& keycode != M && keycode != M2)
 		return (0);
-	if (keycode == M)
+	if (keycode == M || keycode == M2)
 	{
 		if (!window->toggle_map)
 		{
@@ -96,11 +105,13 @@ int	key_hook(int keycode, t_window *window)
 	change_dir(window, keycode);
 	window->player->angle = fix_angle(window->player->angle);
 	get_move(window->player, move, keycode);
-	printf("potential move  x %8f y %8f\nactual int move x %8d y %8d - ",
+	printf("potential move  x %-10f y %-10f\n\
+border val move x %-10d y %-10d\n\
+actual int move x %-10d y %-10d - ",
 		window->player->x + move[0], window->player->y + move[1],
-		(int)border_val(window->player->x + move[0]), (int)border_val(window->player->y + move[1]));
-	if(window->map[(int)border_val(window->player->y + move[1])]
-				[(int)border_val(window->player->x + move[0])] == '1')
+		(int)border_val(window->player->x + move[0]), (int)border_val(window->player->y + move[1]),
+		(int)(window->player->x + move[0]), (int)(window->player->y + move[1]));
+	if(check_move(window->player->x, window->player->y, move, window->map))
 	{
 		printf("nope!\n");
 		return(0);

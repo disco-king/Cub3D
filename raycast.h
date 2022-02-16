@@ -33,6 +33,7 @@
 # define WIN_Y 720
 # define WIN_X 1280
 # define M 1741
+# define M2 109
 # define STEP 0.1
 # define STEPPABLE "0NEWS"
 
