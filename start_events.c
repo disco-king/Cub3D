@@ -66,6 +66,7 @@ void	find_start_pos_and_dir(char **map, t_window *window)
 				window->player->x = (float)j;
 				window->player->y = (float)i;
 				choose_start_dir(window, map[i][j]);
+				window->map[i][j] = 'P';
 			}
 			j++;
 		}
@@ -109,11 +110,11 @@ void	init_window(t_window *window, char **map)
 	get_new_image(&image1, &image2, window);
 	img.img[0] = image1;
 	img.img[1] = image2;
+	window->toggle_map = 0;
 	window->window = mlx_new_window(window->mlx, 1280, 720, "cub3d");
 	find_start_pos_and_dir(map, window);
 	get_texture(window);
 	new_engine_start(window);
-	draw_small_map(window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_loop(window->mlx);
 }

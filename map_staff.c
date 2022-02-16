@@ -1,6 +1,19 @@
 #include "raycast.h"
 
-void	draw_surroundings(t_window *window)
+void	put_hero(t_window *window, int x, int y)
+{
+	void	*map_image;
+	int		width;
+	int		height;
+
+	map_image = mlx_xpm_file_to_image(window->mlx, "./main_hero.xpm",
+			&height, &width);
+	mlx_put_image_to_window(window->mlx, window->window,
+		map_image, x * 64, y * 64);
+	free (map_image);
+}
+
+void	draw_surroundings(t_window *window, int x_map, int y_map)
 {
 	void	*map_image;
 	int		height;
@@ -8,28 +21,33 @@ void	draw_surroundings(t_window *window)
 	int		x;
 	int		y;
 
-	x = (int)window->player->x - 2;
-	y = (int)window->player->y - 2;
+	x = (int)window->player->x - 3;
+	y = (int)window->player->y - 3;
 	if (x < 0)
 		x = 0;
 	if (y < 0)
 		y = 0;
 	map_image = mlx_xpm_file_to_image(window->mlx, "./brick.xpm",
 			&height, &width);
-	while (window->map[y][x] && y < 6)
+	while (y < window->player->y + 3 && y < window->y_border)
 	{
-		while (window->map[y][x] && x < 6)
+		while (x < window->player->x + 3
+			&& x < window->x_border)
 		{
 			if (window->map[y][x] == '1')
-			{
 				mlx_put_image_to_window(window->mlx, window->window,
-					map_image, 640 - 64 * 2 + x * 64, 360 - 64 * 2 + y * 64);
-			}
+					map_image, x_map * 64, y_map * 64);
+			else if (window->map[y][x] == 'P')
+				put_hero(window, x_map, y_map);
+			x_map++;
 			x++;
 		}
-		x = (int)window->player->x - 2;
+		x = (int)window->player->x - 3;
+		x_map = 7;
+		y_map++;
 		y++;
-	}	
+	}
+	free (map_image);
 }
 
 void	draw_small_map(t_window *window)
@@ -37,14 +55,16 @@ void	draw_small_map(t_window *window)
 	void	*map_image;
 	int		height;
 	int		width;
-	int		x;
-	int		y;
+	int		x_map;
+	int		y_map;
 
-	x = (int)window->player->x;
-	y = (int)window->player->y;
-	map_image = mlx_xpm_file_to_image(window->mlx, "./main_hero.xpm",
-			&height, &width);
+	x_map = 7;
+	y_map = 3;
 	mlx_clear_window(window->mlx, window->window);
-		draw_surroundings(window);
-	mlx_put_image_to_window(window->mlx, window->window, map_image, 640 + 4 * 32 + 16, 360 + 16);
+	map_image = mlx_xpm_file_to_image(window->mlx, "./Komi.xpm",
+			&height, &width);
+	mlx_put_image_to_window(window->mlx, window->window, map_image,
+		0, 0);
+	free (map_image);
+	draw_surroundings(window, x_map, y_map);
 }

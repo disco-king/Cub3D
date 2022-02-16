@@ -71,25 +71,43 @@ int	key_hook(int keycode, t_window *window)
 		mlx_destroy_window(window->mlx, window->window);
 		exit(0);
 	}
-	if (keycode != RA && keycode != LA &&
-		keycode != A && keycode != W &&
-		keycode != S && keycode != D &&
-		keycode != A2 && keycode != W2 &&
-		keycode != S2 && keycode != D2)
+	if (keycode != RA && keycode != LA
+		&& keycode != A && keycode != W
+		&& keycode != S && keycode != D
+		&& keycode != A2 && keycode != W2
+		&& keycode != S2 && keycode != D2
+		&& keycode != M)
 		return (0);
+	if (keycode == M)
+	{
+		if (!window->toggle_map)
+		{
+			draw_small_map(window);
+			window->toggle_map = 1;
+			return (0);
+		}
+		else
+		{
+			window->toggle_map = 0;
+			new_engine_start(window);
+			return (0);
+		}
+	}
 	change_dir(window, keycode);
 	window->player->angle = fix_angle(window->player->angle);
 	get_move(window->player, move, keycode);
 	printf("potential move x %f y %f - ", window->player->x + move[0], window->player->y + move[1]);
 	if(window->map[(int)(window->player->y + move[1])][(int)(window->player->x + move[0])] != '0' &&
-		window->map[(int)(window->player->y + move[1])][(int)(window->player->x + move[0])] != 'N')
+		window->map[(int)(window->player->y + move[1])][(int)(window->player->x + move[0])] != 'P')
 	{
 		printf("nope!\n");
 		return(0);
 	}
 	printf("yup!\n");
+	window->map[(int)window->player->y][(int)window->player->x] = '0';
 	window->player->y += move[1];
 	window->player->x += move[0];
+	window->map[(int)window->player->y][(int)window->player->x] = 'P';
 	new_engine_start(window);
 	return (0);
 }

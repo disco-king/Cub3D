@@ -32,6 +32,7 @@
 # define RA 65363
 # define WIN_Y 720
 # define WIN_X 1280
+# define M 1741
 # define STEP 0.1
 # define STEPPABLE "0NEWS"
 
@@ -92,6 +93,7 @@ typedef struct s_window
 	int			y_border;
 	int			side;
 	int			current_x;
+	int			toggle_map;
 	t_params	*params;
 	t_textures	*textures;
 }	t_window;
