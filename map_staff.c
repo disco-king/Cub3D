@@ -43,7 +43,7 @@ void	draw_surroundings(t_window *window, int x_map, int y_map)
 			x++;
 		}
 		x = (int)window->player->x - 3;
-		x_map = 7;
+		x_map = 10;
 		y_map++;
 		y++;
 	}
@@ -58,13 +58,13 @@ void	draw_small_map(t_window *window)
 	int		x_map;
 	int		y_map;
 
-	x_map = 7;
-	y_map = 3;
-	mlx_clear_window(window->mlx, window->window);
-	map_image = mlx_xpm_file_to_image(window->mlx, "./Komi.xpm",
-			&height, &width);
-	mlx_put_image_to_window(window->mlx, window->window, map_image,
-		0, 0);
-	free (map_image);
+	x_map = 10;
+	y_map = 0;
+	//mlx_clear_window(window->mlx, window->window);
+	// map_image = mlx_xpm_file_to_image(window->mlx, "./Komi.xpm",
+	// 		&height, &width);
+	// mlx_put_image_to_window(window->mlx, window->window, map_image,
+	// 	0, 0);
+	//free (map_image);
 	draw_surroundings(window, x_map, y_map);
 }

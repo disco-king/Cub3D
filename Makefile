@@ -9,7 +9,7 @@ LIBA_H = ./map_parsing/libft/libft.h
 SOURCE = main.c start_events.c draw_map.c simple_hooks.c draw_ray_on_map.c \
 		direction_manipulations.c draw_walls.c drawing.c new_engine.c \
 		map_parsing/param_parse.c map_parsing/map_parse.c map_parsing/gnl.c \
-		texture_handling.c map_staff.c
+		texture_handling.c map_staff.c mouse_hook.c
 
 CC = gcc
 
@@ -17,9 +17,9 @@ FLAGS = -Wall -Wextra -Werror
 
 # LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
-# LFLAGS = libmlx_Linux.a -lXext -lX11 -lm
+ LFLAGS = libmlx_Linux.a -lXext -lX11 -lm
 
- LFLAGS = -lmlx_Linux -lXext -lX11 -lm
+# LFLAGS = -lmlx_Linux -lXext -lX11 -lm
 
 HEADER = raycast.h
 
