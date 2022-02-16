@@ -129,4 +129,7 @@ float	fix_angle(float angle);
 void	get_texture(t_window *window);
 void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_end);
 void	calc_texture(t_window *window);
+
+/*map*/
+void	draw_small_map(t_window *window);
 #endif

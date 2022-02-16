@@ -113,6 +113,7 @@ void	init_window(t_window *window, char **map)
 	find_start_pos_and_dir(map, window);
 	get_texture(window);
 	new_engine_start(window);
+	draw_small_map(window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_loop(window->mlx);
 }
