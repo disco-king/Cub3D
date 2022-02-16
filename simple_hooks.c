@@ -53,13 +53,13 @@ void get_move(t_player *player, float move[2], int code)//set move values to one
 	// printf("effective angle by %d is %f, x %f y %f\n", code, angle, move[0], move[1]);
 }
 
-// int check_move(int p_x, int p_y, float *move, char **map)
-// {
-// 	if(!strchr(STEPPABLE, map[(int)(p_y + move[1])][(int)(p_x + move[0])])
-// 		|| )
-// 		return(1);
-// 	return(0);
-// }
+float border_val(float value)
+{
+	int i = value * 10;
+	if(i % 10 == 9)
+		return(value + 1);
+	return(value);
+}
 
 /*we need map size in control structure
 alternative codes are added for testability on linux*/
@@ -96,9 +96,11 @@ int	key_hook(int keycode, t_window *window)
 	change_dir(window, keycode);
 	window->player->angle = fix_angle(window->player->angle);
 	get_move(window->player, move, keycode);
-	printf("potential move x %f y %f - ", window->player->x + move[0], window->player->y + move[1]);
-	if(window->map[(int)(window->player->y + move[1])][(int)(window->player->x + move[0])] != '0' &&
-		window->map[(int)(window->player->y + move[1])][(int)(window->player->x + move[0])] != 'P')
+	printf("potential move  x %8f y %8f\nactual int move x %8d y %8d - ",
+		window->player->x + move[0], window->player->y + move[1],
+		(int)(window->player->x + move[0]), (int)(window->player->y + move[1]));
+	if(window->map[(int)(window->player->y + move[1])]
+				[(int)(window->player->x + move[0])] == '1')
 	{
 		printf("nope!\n");
 		return(0);
