@@ -98,9 +98,9 @@ int	key_hook(int keycode, t_window *window)
 	get_move(window->player, move, keycode);
 	printf("potential move  x %8f y %8f\nactual int move x %8d y %8d - ",
 		window->player->x + move[0], window->player->y + move[1],
-		(int)(window->player->x + move[0]), (int)(window->player->y + move[1]));
-	if(window->map[(int)(window->player->y + move[1])]
-				[(int)(window->player->x + move[0])] == '1')
+		(int)border_val(window->player->x + move[0]), (int)border_val(window->player->y + move[1]));
+	if(window->map[(int)border_val(window->player->y + move[1])]
+				[(int)border_val(window->player->x + move[0])] == '1')
 	{
 		printf("nope!\n");
 		return(0);
