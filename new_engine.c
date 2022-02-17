@@ -14,23 +14,6 @@ void	choose_color(t_window *window)
 	}
 }
 
-// float	fix_angle(float angle)//trying this for the sake of the experiment
-// {
-// 	int full_turns = 0;
-
-// 	if (angle >= 2 * M_PI)
-// 	{
-// 		full_turns = angle / (2 * M_PI);
-// 		angle = angle - ((float)full_turns * (2 * M_PI));
-// 	}
-// 	else if (angle < 0)
-// 	{
-// 		full_turns = angle / (-2 * M_PI);
-// 		angle = angle + ((float)full_turns * 2 * M_PI) + (2 * M_PI);
-// 	}
-// 	return (angle);
-// }
-
 float	fix_angle(float angle)
 {
 	if (angle >= 2 * M_PI)

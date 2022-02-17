@@ -140,4 +140,7 @@ void	draw_small_map(t_window *window);
 /*mouse view*/
 int	mouse_hook(int x, int y, t_window *window);
 int	set_mouse(int x, int y, t_window *window);
+
+/*weapon*/
+int	render_weapon(t_window *window);
 #endif
