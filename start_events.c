@@ -119,5 +119,6 @@ void	init_window(t_window *window, char **map)
 	mlx_hook(window->window, 6, 1L << 4, set_mouse, window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_hook(window->window, 6, 1L << 6, mouse_hook, window);
+	//mlx_loop_hook(window->mlx, render_weapon, window);
 	mlx_loop(window->mlx);
 }

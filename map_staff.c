@@ -6,10 +6,10 @@ void	put_hero(t_window *window, int x, int y)
 	int		width;
 	int		height;
 
-	map_image = mlx_xpm_file_to_image(window->mlx, "./main_hero.xpm",
+	map_image = mlx_xpm_file_to_image(window->mlx, "./hero_cub.xpm",
 			&height, &width);
 	mlx_put_image_to_window(window->mlx, window->window,
-		map_image, x * 64, y * 64);
+		map_image, x * 16, y * 16);
 	free (map_image);
 }
 
@@ -27,7 +27,7 @@ void	draw_surroundings(t_window *window, int x_map, int y_map)
 		x = 0;
 	if (y < 0)
 		y = 0;
-	map_image = mlx_xpm_file_to_image(window->mlx, "./brick.xpm",
+	map_image = mlx_xpm_file_to_image(window->mlx, "./small_wall.xpm",
 			&height, &width);
 	while (y < window->player->y + 3 && y < window->y_border)
 	{
@@ -36,14 +36,14 @@ void	draw_surroundings(t_window *window, int x_map, int y_map)
 		{
 			if (window->map[y][x] == '1')
 				mlx_put_image_to_window(window->mlx, window->window,
-					map_image, x_map * 64, y_map * 64);
+					map_image, x_map * 16, y_map * 16);
 			else if (window->map[y][x] == 'P')
 				put_hero(window, x_map, y_map);
 			x_map++;
 			x++;
 		}
 		x = (int)window->player->x - 3;
-		x_map = 10;
+		x_map = 70;
 		y_map++;
 		y++;
 	}
@@ -58,7 +58,7 @@ void	draw_small_map(t_window *window)
 	int		x_map;
 	int		y_map;
 
-	x_map = 10;
+	x_map = 70;
 	y_map = 0;
 	//mlx_clear_window(window->mlx, window->window);
 	// map_image = mlx_xpm_file_to_image(window->mlx, "./Komi.xpm",
