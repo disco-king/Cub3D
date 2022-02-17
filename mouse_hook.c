@@ -9,7 +9,7 @@ int	set_mouse(int x, int y, t_window *window)
 
 int	mouse_hook(int x, int y, t_window *window)
 {
-	printf("%d %d\n", x, y);
+	// printf("%d %d\n", x, y);
 	if (!window->mouse_x)
 		window->mouse_x = x;
 	if (x + 10 < window->mouse_x)

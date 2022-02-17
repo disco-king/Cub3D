@@ -58,6 +58,8 @@ float border_val(float value)
 	int i = value * 10;
 	if(i % 10 == 9)
 		return(value + 1);
+	if(i % 10 == 0)
+		return(value - 1);
 	return(value);
 }
 
@@ -65,7 +67,9 @@ int check_move(float p_x, float p_y, float *move, char **map)
 {
 
 	if(map[(int)(p_y + move[1])][(int)(p_x + move[0])] == '1'
-		|| map[(int)border_val(p_y + move[1])][(int)border_val(p_x + move[0])] == '1')
+		|| map[(int)border_val(p_y + move[1])][(int)border_val(p_x + move[0])] == '1'
+		|| map[(int)(p_y + move[1])][(int)border_val(p_x + move[0])] == '1'
+		|| map[(int)border_val(p_y + move[1])][(int)(p_x + move[0])] == '1')
 	{
 		return(1);
 	}
