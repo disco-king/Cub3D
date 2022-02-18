@@ -98,5 +98,10 @@ void	get_texture(t_window *window)
 			&width, &height);
 	window->textures->text_width = width;
 	window->textures->text_height = height;
+	if (!window->textures->no || !window->textures->ea || !window->textures->so || !window->textures->we)
+	{
+		write(2, "Error! Invalid textures\n", 25);
+		exit (0);
+	}
 	printf("w and h %d %d\n", width, height);
 }

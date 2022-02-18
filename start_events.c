@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/18 14:05:48 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/18 14:41:08 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	find_start_pos_and_dir(char **map, t_window *window)
 				|| map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == 'S'))
 			{
 				window->player->start_direction = map[i][j];
-				window->player->x = (float)j;
-				window->player->y = (float)i;
+				window->player->x = (float)(j + 0.1);
+				window->player->y = (float)(i + 0.1);
 				choose_start_dir(window, map[i][j]);
 				window->map[i][j] = 'P';
 			}
