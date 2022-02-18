@@ -34,8 +34,9 @@
 # define WIN_X 1280
 # define M 46
 # define M2 109
-# define STEP 0.1
-# define STEPPABLE "0NEWS"
+# define STEP 0.05
+# define PI_8 0.392699082
+# define PI_16 0.196349541
 
 typedef struct s_map
 {

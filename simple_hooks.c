@@ -27,30 +27,69 @@ float step_dir(int code)
 	return(ret);
 }
 
+// void get_move(t_player *player, float move[2], int code)//set move values to one of four options
+// {
+// 	if(code == LA || code == RA)
+// 	{
+// 		move[0] = 0;
+// 		move[1] = 0;
+// 		return ;
+// 	}
+// 	float angle = fix_angle(player->angle + step_dir(code));
+// 	if((angle >= 1.18 && angle < 1.96)
+// 		|| (angle >= 4.32 && angle < 5.11))//this series of ifs determines x value
+// 		move[0] = 0;
+// 	else if(angle >= 1.96 && angle < 4.34)
+// 		move[0] = -STEP;
+// 	else
+// 		move[0] = STEP;
+
+// 	if(angle >= 0.39 && angle < 2.75)//this series of ifs determines y value
+// 		move[1] = -STEP;
+// 	else if(angle >= 3.53 && angle < 5.89)
+// 		move[1] = STEP;
+// 	else
+// 		move[1] = 0;
+// 	// printf("effective angle by %d is %f, x %f y %f\n", code, angle, move[0], move[1]);
+// }
+
 void get_move(t_player *player, float move[2], int code)//set move values to one of four options
 {
+	move[0] = 0;
+	move[1] = 0;
 	if(code == LA || code == RA)
-	{
-		move[0] = 0;
-		move[1] = 0;
 		return ;
-	}
 	float angle = fix_angle(player->angle + step_dir(code));
-	if((angle >= 1.18 && angle < 1.96)
-		|| (angle >= 4.32 && angle < 5.11))//this series of ifs determines x value
-		move[0] = 0;
-	else if(angle >= 1.96 && angle < 4.34)
-		move[0] = -STEP;
-	else
-		move[0] = STEP;
+	
+	if(angle >= PI_16 && angle < PI_16 + PI_8 * 7)//these determine y shift
+	{
+		if(angle >= PI_16 + PI_8 && angle < PI_16 + PI_8 * 6)
+			move[1] = STEP * -2;
+		else
+			move[1] = -STEP;
+	}
+	if(angle >= PI_16  + M_PI && angle < PI_16 + PI_8 * 15)
+	{
+		if(angle >= PI_16 + PI_8 * 9 && angle < PI_16 + PI_8 * 14)
+			move[1] = STEP * 2;
+		else
+			move[1] = STEP;
+	}
 
-	if(angle >= 0.39 && angle < 2.75)//this series of ifs determines y value
-		move[1] = -STEP;
-	else if(angle >= 3.53 && angle < 5.89)
-		move[1] = STEP;
-	else
-		move[1] = 0;
-	// printf("effective angle by %d is %f, x %f y %f\n", code, angle, move[0], move[1]);
+	if(angle >= PI_16 + PI_8 * 12 || angle < PI_16 + PI_8 * 3) //these determine x shift
+	{
+		if(angle >= PI_16 + PI_8 * 13 || angle < PI_16 + PI_8 * 2)
+			move[0] = STEP * 2;
+		else
+			move[0] = STEP;
+	}
+	if(angle >= PI_16  + PI_8 * 4 && angle < PI_16 + PI_8 * 11)
+	{
+		if(angle >= PI_16 + PI_8 * 5 && angle < PI_16 + PI_8 * 10)
+			move[0] = STEP * -2;
+		else
+			move[0] = -STEP;
+	}
 }
 
 float border_val(float value)
@@ -66,10 +105,10 @@ float border_val(float value)
 int check_move(float p_x, float p_y, float *move, char **map)
 {
 
-	if(map[(int)(p_y + move[1])][(int)(p_x + move[0])] == '1'
-		|| map[(int)border_val(p_y + move[1])][(int)border_val(p_x + move[0])] == '1'
-		|| map[(int)(p_y + move[1])][(int)border_val(p_x + move[0])] == '1'
-		|| map[(int)border_val(p_y + move[1])][(int)(p_x + move[0])] == '1')
+	if(map[(int)(p_y + move[1])][(int)(p_x + move[0])] == '1' ||
+		map[(int)border_val(p_y + move[1])][(int)border_val(p_x + move[0])] == '1' ||
+		map[(int)(p_y + move[1])][(int)border_val(p_x + move[0])] == '1' ||
+		map[(int)border_val(p_y + move[1])][(int)(p_x + move[0])] == '1')
 	{
 		return(1);
 	}
