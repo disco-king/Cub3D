@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/26 13:13:25 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:35:43 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define ESC 65307
-# define W 1751
-# define S 1747
-# define A 1729
-# define D 1732
+# define ESC 53
+# define W 13
+# define S 1
+# define A 0
+# define D 2
 # define W2 119
 # define S2 115
 # define A2 97
 # define D2 100
-# define LA 65361
-# define RA 65363
+# define LA 123
+# define RA 124
 # define WIN_Y 720
 # define WIN_X 1280
-# define M 1741
+# define M 46
 # define M2 109
 # define STEP 0.1
 # define STEPPABLE "0NEWS"

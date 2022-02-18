@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/26 13:27:44 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:50:53 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	color_window(t_window *window)
 						window->params->c_col);
 		x = 0;
 	}
-	while (y++ <= 720)
+	while (y++ <= 717)
 	{
 		while (x++ <= 1280)
 			pix_to_img(window->img, x, y,
@@ -116,7 +116,7 @@ void	init_window(t_window *window, char **map)
 	find_start_pos_and_dir(map, window);
 	get_texture(window);
 	new_engine_start(window);
-	mlx_hook(window->window, 6, 1L << 4, set_mouse, window);
+	//mlx_hook(window->window, 6, 1L << 4, set_mouse, window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_hook(window->window, 6, 1L << 6, mouse_hook, window);
 	//mlx_loop_hook(window->mlx, render_weapon, window);

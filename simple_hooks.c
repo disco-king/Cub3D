@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 12:56:37 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/26 13:07:52 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/18 12:03:33 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int check_move(float p_x, float p_y, float *move, char **map)
 
 int	key_hook(int keycode, t_window *window)
 {
+	printf("%d\n", keycode);
 	float move[6];//x and y of the point we'll stand at after the move
 	if (keycode == ESC)
 	{

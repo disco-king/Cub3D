@@ -175,6 +175,7 @@ void	new_engine_start(t_window *window)
 		r = fix_angle(r);
 		hit = 0;
 	}
+	write(1, "here\3", 6);
 	img_turn = (img_turn + 1) % 2;
 	mlx_put_image_to_window(window->mlx, window->window, window->img->cur_img, 0, 0);
 }

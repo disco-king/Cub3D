@@ -10,7 +10,7 @@ void	put_hero(t_window *window, int x, int y)
 			&height, &width);
 	mlx_put_image_to_window(window->mlx, window->window,
 		map_image, x * 16, y * 16);
-	free (map_image);
+	//free (map_image);
 }
 
 void	draw_surroundings(t_window *window, int x_map, int y_map)
@@ -47,12 +47,11 @@ void	draw_surroundings(t_window *window, int x_map, int y_map)
 		y_map++;
 		y++;
 	}
-	free (map_image);
+	//free (map_image);
 }
 
 void	draw_small_map(t_window *window)
 {
-	void	*map_image;
 	int		height;
 	int		width;
 	int		x_map;

@@ -23,7 +23,7 @@ int	render_weapon(t_window *window)
 
 int	set_mouse(int x, int y, t_window *window)
 {
-	window->mouse_x = x;
+	window->mouse_x = 360;
 	return (0);
 }
 
@@ -32,7 +32,7 @@ int	mouse_hook(int x, int y, t_window *window)
 	// printf("%d %d\n", x, y);
 	if (!window->mouse_x)
 		window->mouse_x = x;
-	if (x + 10 < window->mouse_x)
+	if (x + 10 < window->mouse_x && x < 1280 && x >= 0 && y <= 720 && y >= 0)
 	{
 		window->player->angle += M_PI_4 / 12;
 		window->mouse_x = x;
@@ -40,7 +40,7 @@ int	mouse_hook(int x, int y, t_window *window)
 		if (window->toggle_map)
 			draw_small_map(window);
 	}
-	else if (x - 10 > window->mouse_x)
+	else if (x - 10 > window->mouse_x && x <= 1280 && x >= 0 && y <= 720 && y >= 0)
 	{
 		window->player->angle -= M_PI_4 / 12;
 		window->mouse_x = x;
