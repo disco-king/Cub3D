@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/18 11:50:53 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/18 14:05:48 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	color_window(t_window *window)
 
 	x = 0;
 	y = 0;
-	while (y++ <= 360)
+	while (y < 717 && y++ <= 360 + window->offset)
 	{
 		while (x++ <= 1280)
 			pix_to_img(window->img, x, y,
@@ -112,6 +112,8 @@ void	init_window(t_window *window, char **map)
 	img.img[1] = image2;
 	window->toggle_map = 0;
 	window->mouse_x = 0;
+	window->mouse_y = 0;
+	window->offset = 0;
 	window->window = mlx_new_window(window->mlx, 1280, 720, "cub3d");
 	find_start_pos_and_dir(map, window);
 	get_texture(window);

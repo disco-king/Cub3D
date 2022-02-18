@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/18 11:35:43 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/18 12:27:54 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ typedef struct s_window
 	int			current_x;
 	int			toggle_map;
 	int			mouse_x;
+	int			mouse_y;
+	int			offset;
 	t_params	*params;
 	t_textures	*textures;
 }	t_window;

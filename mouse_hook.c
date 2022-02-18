@@ -27,26 +27,49 @@ int	set_mouse(int x, int y, t_window *window)
 	return (0);
 }
 
+void	mouse_y(t_window *window, int y)
+{
+	
+}
+
+
 int	mouse_hook(int x, int y, t_window *window)
 {
+	int	temp_offset;
+
+	temp_offset = window->offset;
 	// printf("%d %d\n", x, y);
 	if (!window->mouse_x)
+	{
 		window->mouse_x = x;
+		window->mouse_y = y;
+	}
+	window->offset = 0;
 	if (x + 10 < window->mouse_x && x < 1280 && x >= 0 && y <= 720 && y >= 0)
 	{
 		window->player->angle += M_PI_4 / 12;
 		window->mouse_x = x;
-		new_engine_start(window);
-		if (window->toggle_map)
-			draw_small_map(window);
 	}
 	else if (x - 10 > window->mouse_x && x <= 1280 && x >= 0 && y <= 720 && y >= 0)
 	{
 		window->player->angle -= M_PI_4 / 12;
 		window->mouse_x = x;
-		new_engine_start(window);
-		if (window->toggle_map)
-			draw_small_map(window);
 	}
+	window->offset = temp_offset;
+	if (y + 20 < window->mouse_y && window->offset < 600 && x <= 1280 && x >= 0 && y <= 720 && y >= 0)
+	{
+		window->offset += 40;
+		window->mouse_y = y;
+		//new_engine_start(window);
+	}
+	else if (y - 20 > window->mouse_y && window->offset > -600 && x <= 1280 && x >= 0 && y <= 720 && y >= 0)
+	{
+		window->offset -= 40;
+		window->mouse_y = y;
+		//new_engine_start(window);
+	}
+	new_engine_start(window);
+	if (window->toggle_map)
+		draw_small_map(window);
 	return (0);
 }

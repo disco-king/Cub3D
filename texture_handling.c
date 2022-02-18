@@ -28,12 +28,25 @@ void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_
 	int	bpp;
 	int	l;
 	int	endian;
+	int temp;
 
 	step = (float)window->textures->text_height / (wall_height);
-	text_pos = (draw_start - 720 / 2 + wall_height / 2) * step;
+	text_pos = (draw_start - 720 / 2 - window->offset + wall_height / 2) * step;
 	y = draw_start;
+	// if (y < 0)
+	// 	y = 0;
+	// // if (y > 720)
+	// // 	y = 10000;
+	printf("in texture %d\n", y);
 	adr = (int *) mlx_get_data_addr(choose_texture(window), &bpp,
 			&l, &endian);
+	temp = window->offset;
+	// if (y + window->offset <= 0)
+	// {
+	// 	y = 0;
+	// 	draw_end += window->offset;
+	// 	window->offset = 0;
+	// }
 	while (y < draw_end)
 	{
 		window->textures->text_y = (int)text_pos & (window->textures->text_height - 1);
@@ -45,6 +58,7 @@ void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_
 		// mlx_pixel_put(window->mlx, window->window, window->current_x, y, window->color);
 		y++;
 	}
+	window->offset = temp;
 }
 
 void	calc_texture(t_window *window)

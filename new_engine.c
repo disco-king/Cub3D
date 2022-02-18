@@ -64,6 +64,7 @@ void	new_engine_start(t_window *window)
 	distance_hor = 100000;
 	window->img->cur_img = window->img->img[img_turn];
 	window->img->cur_addr = window->img->addr[img_turn];
+	mlx_clear_window(window->mlx, window->window);
 	color_window(window);
 	while (x < 1280)
 	{

@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 11:14:33 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/26 13:16:59 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/18 13:59:47 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 	int	draw_start;
 	int	draw_end;
 
-	draw_start = -wall_height / 2 + height / 2;
-	draw_end = wall_height / 2 + height / 2;
+	draw_start = -wall_height / 2 + height / 2 + window->offset;
+	draw_end = wall_height / 2 + height / 2 + window->offset;
 	if (draw_start < 0)
 		draw_start = 0;
 	if (draw_end >= height)
