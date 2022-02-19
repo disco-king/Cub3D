@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:43:55 by fmalphit          #+#    #+#             */
-/*   Updated: 2022/02/19 12:19:03 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/19 13:48:10 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ int	get_params(t_params *params, int fd)
 		arr = ft_split(str, ' ');
 		free(str);
 		if (!arr || add_param(arr, params))
+		{
+			write(2, "alloc problem\n", 14);
 			break ;
+		}
 		arr = free_all(arr);
 	}
 	free_all(arr);

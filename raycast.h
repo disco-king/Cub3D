@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 12:48:24 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 13:53:27 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define STEP 0.05
 # define PI_8 0.392699082
 # define PI_16 0.196349541
+// # define malloc(x) NULL
 
 typedef struct s_map
 {

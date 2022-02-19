@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 13:03:20 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 13:24:00 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,6 @@ void	init_window(t_window *window, char **map)
 	new_engine_start(window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_hook(window->window, 6, 1L << 6, mouse_hook, window);
-	//mlx_hook(window->window, 17, 1L << 17, close_mouse, window);
+	mlx_hook(window->window, 17, 1L << 17, close_mouse, window);
 	mlx_loop(window->mlx);
 }

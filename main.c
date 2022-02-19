@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:20:30 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 12:02:08 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/19 13:52:57 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,26 @@ char	**map_parsing(char *filename, t_params *params)
 	return (map);
 }
 
+void	ret_error(void *data)
+{
+	if (!data)
+	{
+		printf("Error!\n");
+		exit (1);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_params	params;
 	t_window	window;
 	char		**map;
 
-	window.player = malloc(sizeof(t_player));
-	window.textures = malloc(sizeof(t_textures));
 	map = map_parsing(argv[1], &params);
+	window.player = malloc(sizeof(t_player));
+	ret_error(window.player);
+	window.textures = malloc(sizeof(t_textures));
+	ret_error(window.textures);
 	window.params = &params;
 	if (!map)
 		exit(0);

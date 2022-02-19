@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:18:41 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 11:18:42 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 13:39:04 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ void	calc_texture_y(t_window *window, int wall_height,
 
 	step = (float)window->textures->text_height / (wall_height);
 	text_pos = (draw_start - 720 / 2 - window->offset + wall_height / 2) * step;
+	y = 0;
+	while (y < draw_start)
+		pix_to_img(window->img, window->current_x, y++, window->params->c_col);
 	y = draw_start;
 	adr = (int *) mlx_get_data_addr(choose_texture(window), &img.bits_per_pixel,
 			&img.line_length, &img.endian);

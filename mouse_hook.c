@@ -23,13 +23,13 @@ void	get_x(t_window *window, int x, int y)
 
 void	get_y(t_window *window, int x, int y)
 {
-	if (y + 20 < window->mouse_y && window->offset < 600
+	if (y + 20 < window->mouse_y && window->offset < 300
 		&& x <= 1280 && x >= 0 && y <= 720 && y >= 0)
 	{
 		window->offset += 40;
 		window->mouse_y = y;
 	}
-	else if (y - 20 > window->mouse_y && window->offset > -600
+	else if (y - 20 > window->mouse_y && window->offset > -300
 		&& x <= 1280 && x >= 0 && y <= 720 && y >= 0)
 	{
 		window->offset -= 40;
