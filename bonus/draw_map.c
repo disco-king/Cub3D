@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 18:52:26 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/22 13:59:25 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 17:51:50 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycast.h"
+#include "../raycast.h"
 
 void	scale_map(int i, int j, t_window *window, int color)
 {

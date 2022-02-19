@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_engine.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:28:15 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 12:12:12 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 16:49:30 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void	new_engine_start(t_window *window)
 	window->img->cur_addr = window->img->addr[img_turn];
 	mlx_clear_window(window->mlx, window->window);
 	color_window(window);
+	user_tan = 0;
 	while (x < 1280)
 	{
 		do_staff(window, user_tan, r, x);

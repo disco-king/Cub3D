@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_staff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:49:19 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 11:49:20 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 17:52:07 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycast.h"
+#include "../raycast.h"
 
 void	put_hero(t_window *window, int x, int y)
 {
@@ -39,8 +39,6 @@ void	set_coordinates(t_window *window, int *x, int *y)
 void	draw_surroundings(t_window *window, int x_map,
 				int y_map, void *map_image)
 {
-	int		height;
-	int		width;
 	int		x;
 	int		y;
 

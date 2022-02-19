@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 11:14:33 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 13:28:56 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 16:47:32 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,8 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 void	draw_wall(t_window *window, int x)
 {
 	float	wall_height;
-	float	distance;
-	int		width;
 	int		height;
 
-	width = 1;
 	height = 720;
 	wall_height = height / window->distance;
 	if (wall_height < 0)

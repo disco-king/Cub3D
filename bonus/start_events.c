@@ -6,11 +6,11 @@
 /*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 17:40:41 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/19 17:52:18 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycast.h"
+#include "../raycast.h"
 
 void	color_window(t_window *window)
 {	
@@ -76,6 +76,30 @@ void	find_start_pos_and_dir(char **map, t_window *window)
 	}
 }
 
+void	draw_big_map(t_window *window, char **map)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		while (map[i][j])
+		{
+			if (map[i][j] == '1')
+				scale_map(i * 50, j * 50, window, 80000);
+			if (map[i][j] == 'N')
+			{
+				scale_map(i * 50, j * 50, window, 160000);
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+}
+
 void	init_window(t_window *window, char **map)
 {
 	t_data	img;
@@ -101,6 +125,7 @@ void	init_window(t_window *window, char **map)
 	get_texture(window);
 	new_engine_start(window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
+	mlx_hook(window->window, 6, 1L << 6, mouse_hook, window);
 	mlx_hook(window->window, 17, 1L << 17, close_mouse, window);
 	mlx_loop(window->mlx);
 }

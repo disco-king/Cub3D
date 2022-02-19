@@ -1,20 +1,30 @@
 NAME = cub3d
 
-LIBA = libft.a
+LIBFT = ./libft/libft.a
 
-LIBA_C = ./libft/*.c
+LIBFT_O = ./libft/*.o
 
-LIBA_H = ./libft/libft.h
+SRCS = start_events.c key_hooks.c $(MAIN_SRC) $(SRCS_P)
 
-SOURCE = main.c start_events.c draw_map.c simple_hooks.c draw_ray_on_map.c \
+MAIN_SRC = main.c draw_ray_on_map.c \
 		direction_manipulations.c draw_walls.c drawing.c new_engine.c \
-		map_parsing/param_parse.c map_parsing/map_parse.c \
-		simple_hooks_part_two.c \
-		new_engine_part_two.c \
-		texture_handling.c map_staff.c mouse_hook.c \
-			map_parsing/gnl.c map_parsing/param_checks.c \
-			map_parsing/line_parsing.c map_parsing/column_parsing.c \
-			map_parsing/map_utils.c
+		simple_hooks_part_two.c new_engine_part_two.c \
+		texture_handling.c
+
+SRCS_P = map_parsing/param_parse.c map_parsing/map_parse.c \
+		map_parsing/gnl.c map_parsing/param_checks.c \
+		map_parsing/line_parsing.c map_parsing/column_parsing.c \
+		map_parsing/map_utils.c
+
+SRCS_B = bonus/mouse_hook.c bonus/start_events.c \
+		bonus/draw_map.c bonus/map_staff.c \
+		bonus/key_hooks.c
+
+OBJS = $(SRCS:.c=.o)
+
+OBJS_B = $(SRCS_B:.c=.o)
+
+MAIN_OBJS = $(MAIN_SRC:.c=.o) $(SRCS_P:.c=.o)
 
 CC = gcc
 
@@ -30,27 +40,23 @@ HEADER = raycast.h
 
 INCLUDE = mlx.h raycast.h map_parsing/parse.h
 
-#INCLUDE = raycast.h
-
-OBJS = $(SOURCE:.c=.o)
-
 all: $(NAME)
 
-$(LIBA): $(LIBA_C) $(LIBA_H)
-		cd ./libft/; \
-		make; \
-		mv $(LIBA) ../; \
-		cd ./libft/; \
-		make clean
+%.o : %.c $(HEADER)
+		$(CC) -c $(FLAGS) $< -o $@
 
-$(NAME): $(OBJS) $(HEADER) $(LIBA)
-	$(CC) -g $(OBJS) $(FLAGS) $(LIBA) $(LFLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(MAIN_OBJS)
+	$(MAKE) -C ./libft
+	$(CC) $(OBJS) $(MAIN_OBJS) $(FLAGS) $(LIBFT) $(LFLAGS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf $(LIBA)
+	rm -rf $(LIBFT)
 
 re:	fclean all
+
+bonus: fclean
+	make OBJS="$(OBJS_B)" all

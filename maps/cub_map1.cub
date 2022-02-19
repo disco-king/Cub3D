@@ -1,7 +1,7 @@
-NO ./banner.xpm
-SO ./grey.xpm
-WE ./wood.xpm
-EA ./brick.xpm
+NO ./textures/banner.xpm
+SO ./textures/grey.xpm
+WE ./textures/wood.xpm
+EA ./textures/brick.xpm
 
 F 10,10,10
 C 255,50,50

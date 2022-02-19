@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:20:30 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 13:52:57 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 16:46:32 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	main(int argc, char **argv)
 	t_window	window;
 	char		**map;
 
+	if (argc == 1)
+		exit(1);
 	map = map_parsing(argv[1], &params);
 	window.player = malloc(sizeof(t_player));
 	ret_error(window.player);

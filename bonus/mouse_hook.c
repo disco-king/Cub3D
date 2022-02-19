@@ -1,7 +1,21 @@
-#include "raycast.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse_hook.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/19 16:55:46 by fmalphit          #+#    #+#             */
+/*   Updated: 2022/02/19 17:52:13 by fmalphit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../raycast.h"
 
 int	set_mouse(int x, int y, t_window *window)
 {
+	(void) x;
+	(void) y;
 	window->mouse_x = 360;
 	return (0);
 }
