@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"raycast.h": "c"
+		"raycast.h": "c",
+		"parse.h": "c"
 	}
 }
