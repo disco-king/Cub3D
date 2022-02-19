@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:20:30 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 11:33:43 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 12:02:08 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**map_parsing(char *filename, t_params *params)
 		printf("Params invalid!\n");
 		return (NULL);
 	}
-	map = check_map(fd, &(params->height), &(params->width));
+	map = get_map(fd, &(params->height), &(params->width));
 	if (!map)
 		printf("Map invalid!\n");
 	return (map);
