@@ -6,48 +6,11 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:28:15 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 11:28:15 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 12:12:12 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
-
-void	choose_color(t_window *window)
-{
-	if (window->side == 0)
-	{
-		if (window->player->y > window->player->dir_y)
-			window->color += 200;
-	}
-	if (window->side == 1)
-	{
-		if (window->player->x > window->player->dir_x)
-			window->color -= 200;
-	}
-}
-
-float	fix_angle(float angle)
-{
-	if (angle >= 2 * M_PI)
-		angle -= 2 * M_PI;
-	else if (angle < 0)
-		angle += 2 * M_PI;
-	return (angle);
-}
-
-int	check_borders(t_window *window)
-{
-	int	mx;
-	int	my;
-	int	mp;
-
-	mx = (int)window->player->dir_x;
-	my = (int)window->player->dir_y;
-	mp = my * window->x_border + mx;
-	if (mp > 0 && mp < window->x_border * window->y_border)
-		return (1);
-	return (0);
-}
 
 float	calculate_distance(t_window *window, float r, float distance)
 {

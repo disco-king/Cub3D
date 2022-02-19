@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:33:35 by wabathur          #+#    #+#             */
-/*   Updated: 2022/01/26 13:30:38 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 11:37:52 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	draw_all_rays(t_window *window, int color)
 {
 	float	temp_angle;
 	int		i;
-	void *new;
+	void	*new;
 
 	temp_angle = window->player->angle;
 	i = 0;

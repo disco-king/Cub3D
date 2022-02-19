@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 10:24:21 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 12:48:24 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_map
 	int		y;
 }	t_map;
 
-typedef	struct s_textures
+typedef struct s_textures
 {
 	void	*no;
 	void	*ea;
@@ -55,7 +55,7 @@ typedef	struct s_textures
 	int		*height;
 	int		text_x;
 	int		text_y;
-	float		wall_x;
+	float	wall_x;
 	int		wall_y;
 	int		text_width;
 	int		text_height;
@@ -64,8 +64,8 @@ typedef	struct s_textures
 typedef struct s_data {
 	void	*img[2];
 	char	*addr[2];
-	void *cur_img;
-	char *cur_addr;
+	void	*cur_img;
+	char	*cur_addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -73,8 +73,8 @@ typedef struct s_data {
 
 typedef struct s_player
 {
-	float		x;
-	float		y;
+	float	x;
+	float	y;
 	int		start_direction;
 	float	dir_x;
 	float	dir_y;
@@ -115,8 +115,9 @@ void	init_window(t_window *window, char **map);
 void	scale_map(int i, int j, t_window *window, int color);
 
 /*simple hoooks*/
-int	key_release(int keycode, t_window *window);
+int		key_release(int keycode, t_window *window);
 int		key_hook(int keycode, t_window *window);
+void	get_move(t_player *player, float move[2], int code);
 
 /*draw_ray on map*/
 void	count_ray(t_window *window, float xend, float yend, int color);
@@ -131,26 +132,27 @@ void	draw_wall(t_window *window, int x);
 void	color_window(t_window *window);
 
 /*faster drawing section*/
-void get_new_image(void **new1, void **new2, t_window *win);
-void pix_to_img(t_data *data, int x, int y, int color);
+void	get_new_image(void **new1, void **new2, t_window *win);
+void	pix_to_img(t_data *data, int x, int y, int color);
 
 void	new_engine_start(t_window *window);
 float	count_distance(t_window *window);
-int	check_borders(t_window *window);
+int		check_borders(t_window *window);
 float	fix_angle(float angle);
 
 /*textures*/
 void	get_texture(t_window *window);
-void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_end);
+void	calc_texture_y(t_window *window, int wall_height,
+			int draw_start, int draw_end);
 void	calc_texture(t_window *window);
 
 /*map*/
 void	draw_small_map(t_window *window);
 
 /*mouse view*/
-int	mouse_hook(int x, int y, t_window *window);
-int	set_mouse(int x, int y, t_window *window);
-
+int		mouse_hook(int x, int y, t_window *window);
+int		set_mouse(int x, int y, t_window *window);
+int		close_mouse(void);
 /*weapon*/
-int	render_weapon(t_window *window);
+int		render_weapon(t_window *window);
 #endif

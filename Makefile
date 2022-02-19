@@ -9,7 +9,8 @@ LIBA_H = ./map_parsing/libft/libft.h
 SOURCE = main.c start_events.c draw_map.c simple_hooks.c draw_ray_on_map.c \
 		direction_manipulations.c draw_walls.c drawing.c new_engine.c \
 		map_parsing/param_parse.c map_parsing/map_parse.c map_parsing/gnl.c \
-		texture_handling.c map_staff.c mouse_hook.c
+		texture_handling.c map_staff.c mouse_hook.c simple_hooks_part_two.c \
+		new_engine_part_two.c
 
 CC = gcc
 
