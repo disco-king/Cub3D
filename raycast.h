@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/18 12:27:54 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 10:24:21 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_window
 	char		**map;
 	void		*mlx;
 	void		*window;
-	long			color;
+	long		color;
 	t_data		*img;
 	float		distance;
 	float		camera_angle;
@@ -99,6 +99,13 @@ typedef struct s_window
 	int			mouse_x;
 	int			mouse_y;
 	int			offset;
+	float		distance_vert;
+	float		distance_hor;
+	float		step_x;
+	float		step_y;
+	int			hit;
+	float		v_x;
+	float		v_y;
 	t_params	*params;
 	t_textures	*textures;
 }	t_window;

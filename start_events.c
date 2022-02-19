@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/18 14:41:08 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 11:29:16 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void	color_window(t_window *window)
 	{
 		while (x++ <= 1280)
 			pix_to_img(window->img, x, y,
-						window->params->c_col);
+				window->params->c_col);
 		x = 0;
 	}
 	while (y++ <= 717)
 	{
 		while (x++ <= 1280)
 			pix_to_img(window->img, x, y,
-						window->params->f_col);
+				window->params->f_col);
 		x = 0;
 	}
 }
@@ -46,7 +46,6 @@ void	choose_start_dir(t_window *window, char c)
 	if (c == 'S')
 		window->player->angle = M_PI + M_PI_2;
 }
-
 
 void	find_start_pos_and_dir(char **map, t_window *window)
 {
@@ -101,10 +100,10 @@ void	draw_big_map(t_window *window, char **map)
 
 void	init_window(t_window *window, char **map)
 {
-	t_data img;
-	void *image1;
-	void *image2;
-	
+	t_data	img;
+	void	*image1;
+	void	*image2;
+
 	window->mlx = mlx_init();
 	window->img = &img;
 	get_new_image(&image1, &image2, window);
@@ -118,9 +117,7 @@ void	init_window(t_window *window, char **map)
 	find_start_pos_and_dir(map, window);
 	get_texture(window);
 	new_engine_start(window);
-	//mlx_hook(window->window, 6, 1L << 4, set_mouse, window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_hook(window->window, 6, 1L << 6, mouse_hook, window);
-	//mlx_loop_hook(window->mlx, render_weapon, window);
 	mlx_loop(window->mlx);
 }

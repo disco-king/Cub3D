@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 11:14:33 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/18 13:59:47 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/19 11:15:03 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@ float	count_distance(t_window *window)
 	return (distance);
 }
 
-
-// int	count_color(t_window *window, t_data *image)
-// {
-// 	int	width;
-// 	int	height;
-	
-// 	image->img = mlx_xpm_file_to_image(window->mlx, "1.xpm", &width, &height);
-// 	return (0);
-// }
-
 void	calc_pixel(t_window *window, int wall_height, int height, int x)
 {
 	int	draw_start;
@@ -49,23 +39,18 @@ void	calc_pixel(t_window *window, int wall_height, int height, int x)
 	calc_texture_y(window, wall_height, draw_start, draw_end);
 }
 
-
 void	draw_wall(t_window *window, int x)
 {
 	float	wall_height;
 	float	distance;
 	int		width;
 	int		height;
-	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
 	width = 1;
 	height = 720;
 	wall_height = height / window->distance;
 	if (wall_height < 0)
-		wall_height = - wall_height;
+		wall_height = -wall_height;
 	calc_texture(window);
 	calc_pixel(window, wall_height, height, x);
 }

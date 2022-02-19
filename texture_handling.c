@@ -1,5 +1,16 @@
-#include "raycast.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_handling.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/19 11:18:41 by wabathur          #+#    #+#             */
+/*   Updated: 2022/02/19 11:18:42 by wabathur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "raycast.h"
 
 char	*choose_texture(t_window *window)
 {
@@ -18,52 +29,33 @@ char	*choose_texture(t_window *window)
 	return (window->textures->no);
 }
 
-void	calc_texture_y(t_window *window, int wall_height, int draw_start, int draw_end)
+void	calc_texture_y(t_window *window, int wall_height,
+						int draw_start, int draw_end)
 {
 	float	step;
 	float	text_pos;
 	int		y;
 	t_data	img;
-	int	*adr;
-	int	bpp;
-	int	l;
-	int	endian;
-	int temp;
+	int		*adr;
 
 	step = (float)window->textures->text_height / (wall_height);
 	text_pos = (draw_start - 720 / 2 - window->offset + wall_height / 2) * step;
 	y = draw_start;
-	// if (y < 0)
-	// 	y = 0;
-	// // if (y > 720)
-	// // 	y = 10000;
-	printf("in texture %d\n", y);
-	adr = (int *) mlx_get_data_addr(choose_texture(window), &bpp,
-			&l, &endian);
-	temp = window->offset;
-	// if (y + window->offset <= 0)
-	// {
-	// 	y = 0;
-	// 	draw_end += window->offset;
-	// 	window->offset = 0;
-	// }
+	adr = (int *) mlx_get_data_addr(choose_texture(window), &img.bits_per_pixel,
+			&img.line_length, &img.endian);
 	while (y < draw_end)
 	{
-		window->textures->text_y = (int)text_pos & (window->textures->text_height - 1);
+		window->textures->text_y = (int)text_pos;
 		text_pos += step;
-		//printf("%d %d %d\n", window->textures->text_height, window->textures->text_y, window->textures->text_x);
 		window->color = (adr[(int)(window->textures->text_height
-			* window->textures->text_y + window->textures->text_x)]);
+					* window->textures->text_y + window->textures->text_x)]);
 		pix_to_img(window->img, window->current_x, y, window->color);
-		// mlx_pixel_put(window->mlx, window->window, window->current_x, y, window->color);
 		y++;
 	}
-	window->offset = temp;
 }
 
 void	calc_texture(t_window *window)
 {
-	//printf("ray pos %f %f\n", window->player->dir_x, window->player->dir_y);
 	if (window->side)
 		window->textures->wall_x = window->player->dir_y;
 	else if (!window->side)
@@ -72,18 +64,18 @@ void	calc_texture(t_window *window)
 	window->textures->text_x = (int)(window->textures->wall_x
 			* window->textures->text_width);
 	if (window->side && window->player->dir_x > 0)
-	//printf("texture x %d %d\n", window->textures->text_width, window->textures->text_x);
-		window->textures->text_x = window->textures->text_width - window->textures->text_x - 1;
+		window->textures->text_x
+			= window->textures->text_width - window->textures->text_x - 1;
 	if (!window->side && window->player->dir_y < 0)
-		window->textures->text_x = window->textures->text_width - window->textures->text_x - 1;
+		window->textures->text_x
+			= window->textures->text_width - window->textures->text_x - 1;
 }
-
 
 void	get_texture(t_window *window)
 {
 	int	width;
 	int	height;
-	//printf("%s %ld\n", window->params->no_addr, sizeof(window->textures->no));
+
 	window->textures->no = mlx_xpm_file_to_image(window->mlx,
 			window->params->no_addr,
 			&width, &height);
@@ -98,10 +90,10 @@ void	get_texture(t_window *window)
 			&width, &height);
 	window->textures->text_width = width;
 	window->textures->text_height = height;
-	if (!window->textures->no || !window->textures->ea || !window->textures->so || !window->textures->we)
+	if (!window->textures->no || !window->textures->ea
+		|| !window->textures->so || !window->textures->we)
 	{
 		write(2, "Error! Invalid textures\n", 25);
 		exit (0);
 	}
-	printf("w and h %d %d\n", width, height);
 }
