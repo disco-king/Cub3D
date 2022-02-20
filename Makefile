@@ -1,30 +1,30 @@
 NAME = cub3d
 
+NAME_B = $(NAME)
+
 LIBFT = ./libft/libft.a
 
-LIBFT_O = ./libft/*.o
+SRC = start_events.c key_hooks.c
 
-SRCS = start_events.c key_hooks.c $(MAIN_SRC) $(SRCS_P)
+SRC_B = bonus/start_events.c bonus/mouse_hook.c \
+		bonus/draw_map.c bonus/map_staff.c \
+		bonus/key_hooks.c
 
 MAIN_SRC = main.c draw_ray_on_map.c \
 		direction_manipulations.c draw_walls.c drawing.c new_engine.c \
 		simple_hooks_part_two.c new_engine_part_two.c \
 		texture_handling.c
 
-SRCS_P = map_parsing/param_parse.c map_parsing/map_parse.c \
+SRC_P = map_parsing/param_parse.c map_parsing/map_parse.c \
 		map_parsing/gnl.c map_parsing/param_checks.c \
 		map_parsing/line_parsing.c map_parsing/column_parsing.c \
 		map_parsing/map_utils.c
 
-SRCS_B = bonus/mouse_hook.c bonus/start_events.c \
-		bonus/draw_map.c bonus/map_staff.c \
-		bonus/key_hooks.c
+OBJ = $(SRC:.c=.o)
 
-OBJS = $(SRCS:.c=.o)
+OBJ_B = $(SRC_B:.c=.o)
 
-OBJS_B = $(SRCS_B:.c=.o)
-
-MAIN_OBJS = $(MAIN_SRC:.c=.o) $(SRCS_P:.c=.o)
+MAIN_OBJ = $(MAIN_SRC:.c=.o) $(SRC_P:.c=.o)
 
 CC = gcc
 
@@ -32,31 +32,32 @@ FLAGS = -Wall -Wextra -Werror
 
 LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
-#  LFLAGS = libmlx_Linux.a -lXext -lX11 -lm
+# LFLAGS = libmlx_Linux.a -lXext -lX11 -lm
 
 # LFLAGS = -lmlx_Linux -lXext -lX11 -lm
 
 HEADER = raycast.h
 
-INCLUDE = mlx.h raycast.h map_parsing/parse.h
-
 all: $(NAME)
 
 %.o : %.c $(HEADER)
-		$(CC) -c $(FLAGS) $< -o $@
+		$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(MAIN_OBJS)
-	$(MAKE) -C ./libft
-	$(CC) $(OBJS) $(MAIN_OBJS) $(FLAGS) $(LIBFT) $(LFLAGS) -o $(NAME)
+$(LIBFT):
+		$(MAKE) -C ./libft
+
+$(NAME): $(OBJ) $(MAIN_OBJ) $(LIBFT)
+		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft $(LFLAGS) -o $@
 
 clean:
-	rm -rf $(OBJS)
+		$(MAKE) clean -C ./libft
+		rm -rf $(OBJ) $(MAIN_OBJ) $(OBJ_B)
 
 fclean: clean
-	rm -rf $(NAME)
-	rm -rf $(LIBFT)
+		$(MAKE) fclean -C ./libft
+		rm -rf $(NAME)
 
 re:	fclean all
 
 bonus: fclean
-	make OBJS="$(OBJS_B)" all
+	make OBJ="$(OBJ_B)" all
