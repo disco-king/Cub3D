@@ -6,7 +6,7 @@
 /*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 17:40:41 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/20 13:55:26 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,7 @@ void	init_window(t_window *window, char **map)
 	window->window = mlx_new_window(window->mlx, 1280, 720, "cub3d");
 	find_start_pos_and_dir(map, window);
 	if (window->player->x <= 0 || window->player->y <= 0)
-	{
-		write(1, "No player\n", 10);
-		exit (0);
-	}
+		error_exit(7);
 	get_texture(window);
 	new_engine_start(window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);

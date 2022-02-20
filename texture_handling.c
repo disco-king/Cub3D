@@ -6,7 +6,7 @@
 /*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:18:41 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 17:07:30 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/20 13:46:24 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,5 @@ void	get_texture(t_window *window)
 	window->textures->text_height = height;
 	if (!window->textures->no || !window->textures->ea
 		|| !window->textures->so || !window->textures->we)
-	{
-		write(2, "Error! Invalid textures\n", 25);
-		exit (0);
-	}
+		error_exit(6);
 }

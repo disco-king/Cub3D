@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:43:55 by fmalphit          #+#    #+#             */
-/*   Updated: 2022/02/19 13:48:10 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/20 13:18:17 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ int	parse_color(char *color)
 
 int	add_param(char **arr, t_params *params)
 {
-	if (!ft_strncmp(arr[0], "NO", 3))
+	if (!ft_strncmp(arr[0], "NO", 3) && params->no_addr == NULL)
 		params->no_addr = ft_strdup(arr[1]);
-	else if (!ft_strncmp(arr[0], "WE", 3))
+	else if (!ft_strncmp(arr[0], "WE", 3) && params->we_addr == NULL)
 		params->we_addr = ft_strdup(arr[1]);
-	else if (!ft_strncmp(arr[0], "SO", 3))
+	else if (!ft_strncmp(arr[0], "SO", 3) && params->so_addr == NULL)
 		params->so_addr = ft_strdup(arr[1]);
-	else if (!ft_strncmp(arr[0], "EA", 3))
+	else if (!ft_strncmp(arr[0], "EA", 3) && params->ea_addr == NULL)
 		params->ea_addr = ft_strdup(arr[1]);
-	else if (!ft_strncmp(arr[0], "F", 2))
+	else if (!ft_strncmp(arr[0], "F", 2) && params->f_col == -1)
 		params->f_col = parse_color(arr[1]);
-	else if (!ft_strncmp(arr[0], "C", 2))
+	else if (!ft_strncmp(arr[0], "C", 2) && params->c_col == -1)
 		params->c_col = parse_color(arr[1]);
 	else
 		return (1);
@@ -76,10 +76,7 @@ int	get_params(t_params *params, int fd)
 		arr = ft_split(str, ' ');
 		free(str);
 		if (!arr || add_param(arr, params))
-		{
-			write(2, "alloc problem\n", 14);
 			break ;
-		}
 		arr = free_all(arr);
 	}
 	free_all(arr);

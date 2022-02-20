@@ -6,7 +6,7 @@
 /*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:55:33 by fmalphit          #+#    #+#             */
-/*   Updated: 2022/02/19 12:19:12 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/20 13:12:46 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	check_lst(t_list *lst)
 	i = 0;
 	empty = 0;
 	max_len = get_max_len(lst);
+	if (max_len == 0)
+		return (1);
 	while (i < max_len)
 	{
 		if (!column_empty(lst, i))

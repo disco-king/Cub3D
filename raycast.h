@@ -6,7 +6,7 @@
 /*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 17:00:25 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/20 13:46:48 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ typedef struct s_window
 	t_textures	*textures;
 }	t_window;
 
-
 void	init_window(t_window *window, char **map);
 void	scale_map(int i, int j, t_window *window, int color);
+void	error_exit(int code);
 
 /*simple hoooks*/
 int		key_release(int keycode, t_window *window);
