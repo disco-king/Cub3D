@@ -23,7 +23,7 @@ int	parse_color(char *color)
 	while (i < 3)
 	{
 		buff = ft_atoi(color);
-		if (buff < 0)
+		if (buff < 0 || buff > 255)
 			return (-1);
 		value += buff << 4 * (2 - i);
 		while (*color <= 57 && *color >= 48)
@@ -69,10 +69,10 @@ int	get_params(t_params *params, int fd)
 	while (check_params(params))
 	{
 		res = get_next_line(fd, &str);
+		if(res == 0)
+			break ;
 		if (!str)
-		{
 			continue ;
-		}
 		arr = ft_split(str, ' ');
 		free(str);
 		if (!arr || add_param(arr, params))
