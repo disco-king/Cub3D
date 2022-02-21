@@ -1,0 +1,13 @@
+NO ./textures/banner.xpm
+SO ./textures/grey.xpm
+WE ./textures/wood.xpm
+EA ./textures/brick.xpm
+
+F 220,100,0
+C 225,30,0
+
+1111111
+1000N11
+1000011
+100E111
+1111111

@@ -3,15 +3,15 @@
 int	ft_atoi(const char *num)
 {
 	int	res;
-	int buff;
+	int	buff;
 
-	if(!num || *num == 0)
-		return(-1);
+	if (!num || *num == 0)
+		return (-1);
 	res = 0;
 	while (*num)
 	{
-		if(res > 255)
-			return(-1);
+		if (res > 255)
+			return (-1);
 		if (*num > 57 || *num < 48)
 			break ;
 		buff = *num - '0';

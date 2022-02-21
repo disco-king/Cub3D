@@ -134,8 +134,7 @@ void	new_engine_start(t_window *window)
 	window->step_x = 0;
 	window->step_y = 0;
 	window->hit = 0;
-	r = window->player->angle;
-	r = fix_angle(r + M_PI / 6);
+	r = fix_angle(window->player->angle + M_PI / 6);
 	x = 0;
 	window->img->cur_img = window->img->img[img_turn];
 	window->img->cur_addr = window->img->addr[img_turn];

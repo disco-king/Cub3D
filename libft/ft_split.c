@@ -3,7 +3,7 @@
 static void	skip_quotes(const char **str)
 {
 	const char	*ptr;
-	char	quote;
+	char		quote;
 
 	ptr = *str;
 	quote = *ptr;
@@ -58,11 +58,11 @@ static char	*get_next_sep(const char *str, char sep)
 static int	check_malloc(char ***ret, int count)
 {
 	if (count == 0)
-		return(1);
+		return (1);
 	*ret = (char **)malloc((count + 1) * sizeof(char *));
 	if (!*ret)
-		return(1);
-	return(0);
+		return (1);
+	return (0);
 }
 
 char	**ft_split(const char *str, char c)
@@ -73,8 +73,8 @@ char	**ft_split(const char *str, char c)
 	int		i;
 
 	count = word_count(str, c);
-	if(check_malloc(&ret, count))
-		return(NULL);
+	if (check_malloc(&ret, count))
+		return (NULL);
 	ret[count] = NULL;
 	i = count;
 	count = 0;

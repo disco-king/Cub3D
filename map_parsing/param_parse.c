@@ -69,7 +69,7 @@ int	get_params(t_params *params, int fd)
 	while (check_params(params))
 	{
 		res = get_next_line(fd, &str);
-		if(res == 0)
+		if (res == 0)
 			break ;
 		if (!str)
 			continue ;

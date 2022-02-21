@@ -3,13 +3,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
-char			*content;
-struct s_list	*next;
+	char			*content;
+	struct s_list	*next;
 }				t_list;
 
-int	ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 int		ft_atoi(const char *num);
 void	ft_bzero(void *str, int n);
 void	*ft_memset(void *b, int c, size_t len);
@@ -48,6 +48,6 @@ t_list	*ft_lstnew(char *content);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstfree(t_list *lst);
-char **free_all(char **ret);
+char	**free_all(char **ret);
 
 #endif

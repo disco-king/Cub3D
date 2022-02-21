@@ -2,10 +2,10 @@
 
 char	**free_all(char **ret)
 {
-	int i;
+	int	i;
 
-	if(!ret)
-		return(NULL);
+	if (!ret)
+		return (NULL);
 	i = 0;
 	while (ret[i])
 	{

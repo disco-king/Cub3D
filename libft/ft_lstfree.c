@@ -1,6 +1,5 @@
 #include "libft.h"
 
-
 t_list	*ft_lstfree(t_list *list)
 {
 	t_list	*buff;
