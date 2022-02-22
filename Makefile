@@ -7,8 +7,7 @@ LIBFT = ./libft/libft.a
 SRC = start_events.c key_hooks.c
 
 SRC_B = bonus/start_events.c bonus/mouse_hook.c \
-		bonus/draw_map.c bonus/map_staff.c \
-		bonus/key_hooks.c
+		bonus/map_staff.c bonus/key_hooks.c
 
 MAIN_SRC = main.c draw_ray_on_map.c \
 		direction_manipulations.c draw_walls.c drawing.c new_engine.c \

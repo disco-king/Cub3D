@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 12:56:37 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/22 11:28:36 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:26:24 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ float	border_val(float value)
 
 int	check_move(float p_x, float p_y, float *move, char **map)
 {
-	if (map[(int)(p_y + move[1])][(int)(p_x + move[0])] == '1' ||
+	if (map[(int)(p_y + 0.1 + move[1])][(int)(p_x + 0.1 + move[0])] == '1' ||
 		map[(int)border_val(p_y + move[1])]
 			[(int)border_val(p_x + move[0])] == '1' ||
 		map[(int)(p_y + move[1])][(int)border_val(p_x + move[0])] == '1' ||

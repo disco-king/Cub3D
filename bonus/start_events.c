@@ -6,7 +6,7 @@
 /*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 17:42:31 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/20 13:56:55 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/22 12:08:38 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,6 @@ void	find_start_pos_and_dir(char **map, t_window *window)
 				window->player->y = (float)(i + 0.1);
 				choose_start_dir(window, map[i][j]);
 				window->map[i][j] = 'P';
-			}
-			j++;
-		}
-		i++;
-		j = 0;
-	}
-}
-
-void	draw_big_map(t_window *window, char **map)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (map[i])
-	{
-		while (map[i][j])
-		{
-			if (map[i][j] == '1')
-				scale_map(i * 50, j * 50, window, 80000);
-			if (map[i][j] == 'N')
-			{
-				scale_map(i * 50, j * 50, window, 160000);
 			}
 			j++;
 		}
