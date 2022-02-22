@@ -6,7 +6,7 @@
 /*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:43:55 by fmalphit          #+#    #+#             */
-/*   Updated: 2022/02/20 13:18:17 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:59:13 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_color(char *color)
 		buff = ft_atoi(color);
 		if (buff < 0 || buff > 255)
 			return (-1);
-		value += buff << 4 * (2 - i);
+		value += buff << 8 * (2 - i);
 		while (*color <= 57 && *color >= 48)
 			color++;
 		i++;
