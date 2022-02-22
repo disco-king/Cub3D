@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/20 13:46:48 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:34:59 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,5 @@ void	draw_small_map(t_window *window);
 int		mouse_hook(int x, int y, t_window *window);
 int		set_mouse(int x, int y, t_window *window);
 int		close_mouse(void);
-/*weapon*/
-int		render_weapon(t_window *window);
+
 #endif

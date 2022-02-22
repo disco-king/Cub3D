@@ -1,6 +1,6 @@
 NAME = cub3d
 
-NAME_B = $(NAME)
+NAME_B = cub3d_bonus
 
 LIBFT = ./libft/libft.a
 
@@ -32,16 +32,12 @@ FLAGS = -Wall -Wextra -Werror
 
 LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
-# LFLAGS = libmlx_Linux.a -lXext -lX11 -lm
-
-# LFLAGS = -lmlx_Linux -lXext -lX11 -lm
-
-HEADER = raycast.h
+HEADER = raycast.h ./map_parsing/parse.h
 
 all: $(NAME)
 
 %.o : %.c $(HEADER)
-		$(CC) $(FLAGS) -c $< -o $@
+		$(CC) -c $< -o $@
 
 $(LIBFT):
 		$(MAKE) -C ./libft
@@ -49,15 +45,17 @@ $(LIBFT):
 $(NAME): $(OBJ) $(MAIN_OBJ) $(LIBFT)
 		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft $(LFLAGS) -o $@
 
+$(NAME_B): $(OBJ_B) $(MAIN_OBJ) $(LIBFT)
+		$(CC) $(OBJ_B) $(MAIN_OBJ) -L ./libft/ -lft $(LFLAGS) -o $@
+
 clean:
 		$(MAKE) clean -C ./libft
 		rm -rf $(OBJ) $(MAIN_OBJ) $(OBJ_B)
 
 fclean: clean
 		$(MAKE) fclean -C ./libft
-		rm -rf $(NAME)
+		rm -rf $(NAME) $(NAME_B)
 
 re:	fclean all
 
-bonus: fclean
-	make OBJ="$(OBJ_B)" all
+bonus: $(NAME_B)

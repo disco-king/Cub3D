@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_staff.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:49:19 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/19 17:52:07 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:30:25 by wabathur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	put_hero(t_window *window, int x, int y)
 	int		width;
 	int		height;
 
-	map_image = mlx_xpm_file_to_image(window->mlx, "./hero_cub.xpm",
+	map_image = mlx_xpm_file_to_image(window->mlx, "./textures/hero_cub.xpm",
 			&height, &width);
 	if (!map_image)
 		return ;
@@ -73,7 +73,7 @@ void	draw_small_map(t_window *window)
 
 	x_map = 70;
 	y_map = 0;
-	map_image = mlx_xpm_file_to_image(window->mlx, "./small_wall.xpm",
+	map_image = mlx_xpm_file_to_image(window->mlx, "./textures/small_wall.xpm",
 			&height, &width);
 	if (!map_image)
 		return ;
