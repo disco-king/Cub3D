@@ -4,6 +4,8 @@ NAME_B = cub3D_bonus
 
 LIBFT = ./libft/libft.a
 
+MLX = ./minilibx-linux/libmlx_Linux.a
+
 SRC = start_events.c key_hooks.c
 
 SRC_B = bonus/start_events.c bonus/mouse_hook.c \
@@ -29,7 +31,7 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-LFLAGS = -lmlx_Linux -lm -lX11 -lXext
+LFLAGS = -lm -lX11 -lXext
 
 HEADER = raycast.h ./map_parsing/parse.h
 
@@ -41,14 +43,18 @@ all: $(NAME)
 $(LIBFT):
 		$(MAKE) -C ./libft
 
-$(NAME): $(OBJ) $(MAIN_OBJ) $(LIBFT)
-		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft $(LFLAGS) -o $@
+$(MLX):
+		$(MAKE) -C ./minilibx-linux
 
-$(NAME_B): $(OBJ_B) $(MAIN_OBJ) $(LIBFT)
-		$(CC) $(OBJ_B) $(MAIN_OBJ) -L ./libft/ -lft $(LFLAGS) -o $@
+$(NAME): $(OBJ) $(MAIN_OBJ) $(LIBFT) $(MLX)
+		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft -L ./minilibx-linux -lmlx_Linux $(LFLAGS) -o $@
+
+$(NAME_B): $(OBJ_B) $(MAIN_OBJ) $(LIBFT) $(MLX)
+		$(CC) $(OBJ_B) $(MAIN_OBJ) -L ./libft/ -lft -L ./minilibx-linux -lmlx_Linux $(LFLAGS) -o $@
 
 clean:
 		$(MAKE) clean -C ./libft
+		$(MAKE) clean -C ./minilibx-linux
 		rm -rf $(OBJ) $(MAIN_OBJ) $(OBJ_B)
 
 fclean: clean

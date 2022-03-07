@@ -96,7 +96,7 @@ void	init_window(t_window *window, char **map)
 	if (window->player->x <= 0 || window->player->y <= 0)
 		error_exit(7);
 	get_texture(window);
-	new_engine_start(window);
+	redraw(window);
 	mlx_hook(window->window, 2, 1L << 0, key_hook, window);
 	mlx_hook(window->window, 17, 1L << 17, close_mouse, window);
 	mlx_loop(window->mlx);

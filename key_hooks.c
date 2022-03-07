@@ -74,6 +74,6 @@ int	key_hook(int keycode, t_window *window)
 	window->player->x += move[0];
 	if (window->map[(int)window->player->y][(int)window->player->x] != '1')
 		window->map[(int)window->player->y][(int)window->player->x] = 'P';
-	new_engine_start(window);
+	redraw(window);
 	return (0);
 }

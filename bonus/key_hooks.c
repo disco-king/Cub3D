@@ -54,7 +54,7 @@ int	check_keycode(t_window *window, int keycode)
 		else
 		{
 			window->toggle_map = 0;
-			new_engine_start(window);
+			redraw(window);
 		}
 	}
 	if (keycode != RA && keycode != LA
@@ -87,7 +87,7 @@ int	key_hook(int keycode, t_window *window)
 	window->player->x += move[0];
 	if (window->map[(int)window->player->y][(int)window->player->x] != '1')
 		window->map[(int)window->player->y][(int)window->player->x] = 'P';
-	new_engine_start(window);
+	redraw(window);
 	if (window->toggle_map)
 		draw_small_map(window);
 	return (0);

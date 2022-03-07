@@ -95,7 +95,7 @@ void	calc_hor_distance(t_window *window, float user_tan, float r)
 	window->distance_hor = calculate_distance(window, r, window->distance_hor);
 }
 
-void	do_staff(t_window *window, float user_tan, float r, int x)
+void	do_stuff(t_window *window, float user_tan, float r, int x)
 {
 	window->distance_vert = 100000;
 	window->distance_hor = 100000;
@@ -124,7 +124,7 @@ void	do_staff(t_window *window, float user_tan, float r, int x)
 	window->hit = 0;
 }
 
-void	new_engine_start(t_window *window)
+void	redraw(t_window *window)
 {
 	float		r;
 	float		user_tan;
@@ -143,7 +143,7 @@ void	new_engine_start(t_window *window)
 	user_tan = 0;
 	while (x < 1280)
 	{
-		do_staff(window, user_tan, r, x);
+		do_stuff(window, user_tan, r, x);
 		x += 1;
 		r -= M_PI / 3 / 1280;
 		r = fix_angle(r);

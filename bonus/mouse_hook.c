@@ -12,14 +12,6 @@
 
 #include "../raycast.h"
 
-int	set_mouse(int x, int y, t_window *window)
-{
-	(void) x;
-	(void) y;
-	window->mouse_x = 360;
-	return (0);
-}
-
 void	get_x(t_window *window, int x, int y)
 {
 	if (x + 10 < window->mouse_x && x < 1280 && x >= 0 && y <= 720 && y >= 0)
@@ -65,7 +57,7 @@ int	mouse_hook(int x, int y, t_window *window)
 	get_x(window, x, y);
 	window->offset = temp_offset;
 	get_y(window, x, y);
-	new_engine_start(window);
+	redraw(window);
 	if (window->toggle_map)
 		draw_small_map(window);
 	return (0);

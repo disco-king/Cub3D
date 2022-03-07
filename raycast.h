@@ -135,7 +135,7 @@ void	color_window(t_window *window);
 void	get_new_image(void **new1, void **new2, t_window *win);
 void	pix_to_img(t_data *data, int x, int y, int color);
 
-void	new_engine_start(t_window *window);
+void	redraw(t_window *window);
 float	count_distance(t_window *window);
 int		check_borders(t_window *window);
 float	fix_angle(float angle);
@@ -151,7 +151,6 @@ void	draw_small_map(t_window *window);
 
 /*mouse view*/
 int		mouse_hook(int x, int y, t_window *window);
-int		set_mouse(int x, int y, t_window *window);
 int		close_mouse(void);
 
 #endif
