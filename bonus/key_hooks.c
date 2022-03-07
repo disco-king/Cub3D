@@ -58,6 +58,7 @@ int	check_keycode(t_window *window, int keycode)
 		}
 	}
 	if (keycode != RA && keycode != LA
+		&& keycode != RA2 && keycode != LA2
 		&& keycode != A && keycode != W
 		&& keycode != S && keycode != D
 		&& keycode != A2 && keycode != W2

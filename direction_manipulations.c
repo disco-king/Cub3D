@@ -41,11 +41,11 @@ void	draw_all_rays(t_window *window, int color)
 
 void	change_dir(t_window *window, int keycode)
 {
-	if (keycode == LA)
+	if (keycode == LA || keycode == LA2)
 	{	
 		window->player->angle += M_PI_4 / 12;
 	}
-	if (keycode == RA)
+	if (keycode == RA || keycode == RA2)
 	{
 		window->player->angle -= M_PI_4 / 12;
 	}

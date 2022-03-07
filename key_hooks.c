@@ -45,6 +45,7 @@ int	check_move(float p_x, float p_y, float *move, char **map)
 int	check_keycode(int keycode)
 {
 	if (keycode != RA && keycode != LA
+		&& keycode != RA2 && keycode != LA2
 		&& keycode != A && keycode != W
 		&& keycode != S && keycode != D
 		&& keycode != A2 && keycode != W2

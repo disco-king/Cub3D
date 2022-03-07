@@ -4,7 +4,7 @@ NAME_B = cub3D_bonus
 
 LIBFT = ./libft/libft.a
 
-MLX = ./minilibx-linux/libmlx_Linux.a
+MLX = ./minilibx/libmlx.a
 
 SRC = start_events.c key_hooks.c
 
@@ -44,17 +44,17 @@ $(LIBFT):
 		$(MAKE) -C ./libft
 
 $(MLX):
-		$(MAKE) -C ./minilibx-linux
+		$(MAKE) -C ./minilibx
 
 $(NAME): $(OBJ) $(MAIN_OBJ) $(LIBFT) $(MLX)
-		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft -L ./minilibx-linux -lmlx_Linux $(LFLAGS) -o $@
+		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft -L ./minilibx -lmlx $(LFLAGS) -o $@
 
 $(NAME_B): $(OBJ_B) $(MAIN_OBJ) $(LIBFT) $(MLX)
-		$(CC) $(OBJ_B) $(MAIN_OBJ) -L ./libft/ -lft -L ./minilibx-linux -lmlx_Linux $(LFLAGS) -o $@
+		$(CC) $(OBJ_B) $(MAIN_OBJ) -L ./libft/ -lft -L ./minilibx -lmlx $(LFLAGS) -o $@
 
 clean:
 		$(MAKE) clean -C ./libft
-		$(MAKE) clean -C ./minilibx-linux
+		$(MAKE) clean -C ./minilibx
 		rm -rf $(OBJ) $(MAIN_OBJ) $(OBJ_B)
 
 fclean: clean

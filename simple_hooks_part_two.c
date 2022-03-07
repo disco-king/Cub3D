@@ -51,7 +51,8 @@ void	get_move(t_player *player, float move[2], int code)
 
 	move[0] = 0;
 	move[1] = 0;
-	if (code == LA || code == RA)
+	if (code == LA || code == RA
+		|| code == LA2 || code == RA2)
 		return ;
 	angle = fix_angle(player->angle + step_dir(code));
 	if (angle >= PI_16 && angle < PI_16 + PI_8 * 7)
