@@ -29,7 +29,7 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-LFLAGS = -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+LFLAGS = -lmlx_Linux -lm -lX11 -lXext
 
 HEADER = raycast.h ./map_parsing/parse.h
 

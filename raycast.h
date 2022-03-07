@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define ESC 53
+# define ESC 65307
 # define W 13
 # define S 1
 # define A 0
@@ -28,8 +28,8 @@
 # define S2 115
 # define A2 97
 # define D2 100
-# define LA 123
-# define RA 124
+# define LA 65361
+# define RA 65363
 # define WIN_Y 720
 # define WIN_X 1280
 # define M 46
