@@ -6,6 +6,8 @@ LIBFT = ./libft/libft.a
 
 MLX = ./minilibx/libmlx.a
 
+UNAME = $(shell uname)
+
 SRC = start_events.c key_hooks.c
 
 SRC_B = bonus/start_events.c bonus/mouse_hook.c \
@@ -31,7 +33,11 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-LFLAGS = -lm -lX11 -lXext
+LFLAGS = -L ./minilibx -lmlx -lm -lX11 -lXext
+
+ifeq ($(UNAME), Darwin)
+LFLAGS = -L ./minilibx -lmlx -lm -framework OpenGL -framework AppKit
+endif
 
 HEADER = raycast.h ./map_parsing/parse.h
 
@@ -47,10 +53,10 @@ $(MLX):
 		$(MAKE) -C ./minilibx
 
 $(NAME): $(OBJ) $(MAIN_OBJ) $(LIBFT) $(MLX)
-		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft -L ./minilibx -lmlx $(LFLAGS) -o $@
+		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft $(LFLAGS) -o $@
 
 $(NAME_B): $(OBJ_B) $(MAIN_OBJ) $(LIBFT) $(MLX)
-		$(CC) $(OBJ_B) $(MAIN_OBJ) -L ./libft/ -lft -L ./minilibx -lmlx $(LFLAGS) -o $@
+		$(CC) $(OBJ_B) $(MAIN_OBJ) -L ./libft/ -lft $(LFLAGS) -o $@
 
 clean:
 		$(MAKE) clean -C ./libft

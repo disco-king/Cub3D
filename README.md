@@ -2,7 +2,7 @@
 
 This is our take on the Cub3D project form school 42 program.
 
-The repo contains full source code for a program that imitates the raycasting engine used in Wolfenstein3D. The graphics are implemented using the Minilibx library provided by 42. This is a simple library that lets students use OpenGL functionality without spending too much time learning the basics.
+The repo contains full source code for a program that imitates the raycasting engine used in Wolfenstein3D. The graphics are implemented using the Minilibx library provided by 42. This is a simple library that lets students use X11 and OpenGL functionality without spending too much time learning the basics.
 
 The makefile in the root should create the libmlx library file and then build the whole program. It is then possible to use the cub3D or cub3D_bonus (use make bonus) executables to render and explore any map in the maps/ directory or any other map the fits the configuration file rules. Move around using WASD, look around using left and right arrow keys. If you use _bonus version, it is also possible to use the mouse and create a minimap by pressing M.
 
