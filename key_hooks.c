@@ -6,7 +6,7 @@
 /*   By: fmalphit <fmalphit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 12:56:37 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/22 12:26:24 by fmalphit         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:45:17 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	key_hook(int keycode, t_window *window)
 {
 	float	move[6];
 
-	if (keycode == ESC)
+	if (keycode == ESC || keycode == ESC2)
 	{
 		mlx_destroy_window(window->mlx, window->window);
 		exit(0);

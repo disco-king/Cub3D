@@ -6,7 +6,7 @@
 /*   By: wabathur <wabathur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:41:45 by wabathur          #+#    #+#             */
-/*   Updated: 2022/02/22 11:34:59 by wabathur         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:47:59 by fmalphit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define ESC 65307
+# define ESC 53 
+# define ESC2 65307
 # define W 13
 # define S 1
 # define A 0

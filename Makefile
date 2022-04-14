@@ -4,9 +4,17 @@ NAME_B = cub3D_bonus
 
 LIBFT = ./libft/libft.a
 
-MLX = ./minilibx/libmlx.a
-
 UNAME = $(shell uname)
+
+MLX = ./minilibx/libmlx.a
+MLX_DIR = ./minilibx
+LFLAGS = -L ./minilibx -lmlx -lm -lX11 -lXext
+
+ifeq ($(UNAME), Darwin)
+MLX = ./mlx_darwin/libmlx.a
+MLX_DIR = ./mlx_darwin/
+LFLAGS = -L ./minilibx -lmlx -lm -framework OpenGL -framework AppKit
+endif
 
 SRC = start_events.c key_hooks.c
 
@@ -33,11 +41,6 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-LFLAGS = -L ./minilibx -lmlx -lm -lX11 -lXext
-
-ifeq ($(UNAME), Darwin)
-LFLAGS = -L ./minilibx -lmlx -lm -framework OpenGL -framework AppKit
-endif
 
 HEADER = raycast.h ./map_parsing/parse.h
 
@@ -50,7 +53,7 @@ $(LIBFT):
 		$(MAKE) -C ./libft
 
 $(MLX):
-		$(MAKE) -C ./minilibx
+		$(MAKE) -C $(MLX_DIR) 
 
 $(NAME): $(OBJ) $(MAIN_OBJ) $(LIBFT) $(MLX)
 		$(CC) $(OBJ) $(MAIN_OBJ) -L ./libft/ -lft $(LFLAGS) -o $@
@@ -60,11 +63,12 @@ $(NAME_B): $(OBJ_B) $(MAIN_OBJ) $(LIBFT) $(MLX)
 
 clean:
 		$(MAKE) clean -C ./libft
-		$(MAKE) clean -C ./minilibx
+		$(MAKE) clean -C $(MLX_DIR) 
 		rm -rf $(OBJ) $(MAIN_OBJ) $(OBJ_B)
 
 fclean: clean
 		$(MAKE) fclean -C ./libft
+		$(MAKE) fclean -C $(MLX_DIR) 
 		rm -rf $(NAME) $(NAME_B)
 
 re:	fclean all
