@@ -68,7 +68,6 @@ clean:
 
 fclean: clean
 		$(MAKE) fclean -C ./libft
-		$(MAKE) fclean -C $(MLX_DIR) 
 		rm -rf $(NAME) $(NAME_B)
 
 re:	fclean all

@@ -71,7 +71,7 @@ int	key_hook(int keycode, t_window *window)
 {
 	float	move[6];
 
-	if (keycode == ESC)
+	if (keycode == ESC || keycode == ESC2)
 	{
 		mlx_destroy_window(window->mlx, window->window);
 		exit(0);
